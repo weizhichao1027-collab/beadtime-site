@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-root=".">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>拼豆时光 · 离线拼豆图纸工作室</title>
+  <meta name="description" content="把照片变成真正能制作的拼豆图纸。本机生成、逐颗编辑、材料统计、按颜色跟拼，并可导出 PNG 或 PDF。">
+  <meta name="theme-color" content="#F4EDE3">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="canonical" href="./">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="拼豆时光 / Fuse Beads">
+  <meta property="og:description" content="Offline fuse-bead pattern studio. Photos stay on the iPhone.">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/img/og.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="home" data-title-key="metaHomeTitle" data-desc-key="metaHomeDesc">
+  <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
+  <header id="site-header"></header>
+  <main id="main">
+    <section class="wrap hero">
+      <div>
+        <h1 data-i18n="heroTitle">把灵感放上豆板</h1>
+        <p class="lede" data-i18n="heroLede">拼豆时光是一款完全离线的拼豆图纸工具。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6799906107" data-i18n="ctaStore">在 App Store 查看</a>
+          <a class="btn btn-ghost" href="#loop" data-i18n="ctaHow">看制作闭环</a>
+        </div>
+        <div class="hero-meta">
+          <span data-i18n="heroMeta1">无需账号</span>
+          <span data-i18n="heroMeta2">iOS 17 或更新</span>
+          <span data-i18n="heroMeta3">免费，无内购</span>
+        </div>
+      </div>
+      <div class="pegboard" id="pegboard" aria-hidden="true"></div>
+    </section>
+
+    <section class="section">
+      <div class="wrap story-grid">
+        <div>
+          <p class="section-kicker" data-i18n="storyKicker">给真实制作准备</p>
+          <h2 data-i18n="storyTitle">先完成一张能烫出来的图纸</h2>
+          <p class="prose" data-i18n="storyBody"></p>
+        </div>
+        <figure class="story-photo">
+          <img src="assets/img/hero-craft.jpg" data-i18n-alt="storyAlt" alt="厨房桌上的拼豆板、镊子和彩色豆粒" width="1400" height="1077">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="loop">
+      <div class="wrap">
+        <p class="section-kicker" data-i18n="loopKicker">制作闭环</p>
+        <h2 data-i18n="loopTitle">从一张图到一板豆</h2>
+        <div class="loop">
+          <article class="loop-row">
+            <figure class="loop-visual loop-art" aria-hidden="true">
+              <div class="crop-frame">
+                <div class="pegboard pegboard--loop" id="loop-board"></div>
+              </div>
+            </figure>
+            <div class="loop-copy">
+              <h3 data-i18n="loop1Title"></h3>
+              <p data-i18n="loop1Body"></p>
+            </div>
+          </article>
+          <article class="loop-row">
+            <figure class="loop-visual">
+              <img src="assets/img/cat-project.jpg" data-i18n-alt="loop2Alt" alt="" width="1100" height="1100">
+            </figure>
+            <div class="loop-copy">
+              <h3 data-i18n="loop2Title"></h3>
+              <p data-i18n="loop2Body"></p>
+            </div>
+          </article>
+          <article class="loop-row">
+            <figure class="loop-visual">
+              <img src="assets/img/daisy-idea.jpg" data-i18n-alt="loop3Alt" alt="" width="1100" height="1100">
+            </figure>
+            <div class="loop-copy">
+              <h3 data-i18n="loop3Title"></h3>
+              <p data-i18n="loop3Body"></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap spec-band">
+        <div>
+          <h2 data-i18n="specTitle"></h2>
+          <p data-i18n="specBody"></p>
+        </div>
+        <dl class="spec-list">
+          <div>
+            <dt data-i18n="specBoards"></dt>
+            <dd data-i18n="specBoardsVal"></dd>
+          </div>
+          <div>
+            <dt data-i18n="specColors"></dt>
+            <dd data-i18n="specColorsVal"></dd>
+          </div>
+          <div>
+            <dt data-i18n="specLibrary"></dt>
+            <dd data-i18n="specLibraryVal"></dd>
+          </div>
+          <div>
+            <dt data-i18n="specLocales"></dt>
+            <dd data-i18n="specLocalesVal"></dd>
+          </div>
+          <div>
+            <dt data-i18n="specExport"></dt>
+            <dd data-i18n="specExportVal"></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 data-i18n="palTitle"></h2>
+        <p class="prose" data-i18n="palBody"></p>
+        <div class="palette-strip">
+          <p><strong data-i18n="palPerler"></strong> White, Hot Coral, Toothpaste</p>
+          <div class="swatches" aria-hidden="true">
+            <i style="background:#F7F5EE"></i><i style="background:#EC654F"></i><i style="background:#F6C928"></i>
+            <i style="background:#8ACDB7"></i><i style="background:#24446F"></i><i style="background:#232326"></i>
+          </div>
+          <p><strong data-i18n="palHama"></strong> 01, 05, 26, 45</p>
+          <div class="swatches" aria-hidden="true">
+            <i style="background:#F8F7F1"></i><i style="background:#D8473E"></i><i style="background:#EAB0A1"></i>
+            <i style="background:#B58CC7"></i><i style="background:#E9782D"></i><i style="background:#F4D63B"></i>
+          </div>
+          <p><strong data-i18n="palArtkal"></strong> S-5mm</p>
+          <div class="swatches" aria-hidden="true">
+            <i style="background:#4A9C62"></i><i style="background:#3977B7"></i><i style="background:#C84B7A"></i>
+            <i style="background:#C58A55"></i><i style="background:#78529A"></i><i style="background:#F4B183"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 data-i18n="localeTitle"></h2>
+        <p class="prose" data-i18n="localeBody"></p>
+        <div class="locale-cloud">
+          <span>简体中文</span><span>English</span><span>繁體中文</span><span>日本語</span>
+          <span>한국어</span><span>Español</span><span>Français</span><span>Deutsch</span>
+          <span>Português (Brasil)</span><span>Italiano</span><span>Русский</span>
+          <span>العربية</span><span>हिन्दी</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap offline-band">
+        <h2 data-i18n="offTitle"></h2>
+        <dl class="offline-points">
+          <div>
+            <dt data-i18n="off1Title"></dt>
+            <dd data-i18n="off1Body"></dd>
+          </div>
+          <div>
+            <dt data-i18n="off2Title"></dt>
+            <dd data-i18n="off2Body"></dd>
+          </div>
+          <div>
+            <dt data-i18n="off3Title"></dt>
+            <dd data-i18n="off3Body"></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cta-close wrap">
+      <h2 data-i18n="ctaTitle"></h2>
+      <p class="prose" data-i18n="ctaBody"></p>
+      <p class="cta-actions">
+        <a class="btn btn-primary" href="https://apps.apple.com/app/id6799906107" data-i18n="ctaStore"></a>
+      </p>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
