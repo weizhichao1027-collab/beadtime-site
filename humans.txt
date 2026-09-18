@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Shanghai Qishan Cultural Communication Co., Ltd.
+Developer (zh): 上海岐山文化传播有限公司
+Contact: 281916057@qq.com
+
+/* SITE */
+Standards: HTML, CSS, JS
+Languages: zh-Hans, en, zh-Hant, ja, ko, de, fr, es, it, pt-BR, ru, ar, hi
+Software: static GitHub Pages
+Last update: 2026-09-18
+No cookies, analytics, ads, or accounts.

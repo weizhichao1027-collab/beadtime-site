@@ -1,0 +1,5 @@
+Contact: mailto:281916057@qq.com
+Preferred-Languages: zh-Hans, en
+Canonical: https://weizhichao1027-collab.github.io/beadtime-site/.well-known/security.txt
+Policy: https://weizhichao1027-collab.github.io/beadtime-site/privacy/
+Expires: 2027-09-18T00:00:00.000Z

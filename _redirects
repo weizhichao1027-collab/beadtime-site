@@ -1,5 +1,4 @@
-/en /support/?lang=en 302
-/en/privacy /privacy/?lang=en 302
-/zh-Hans /?lang=zh-Hans 302
-/zh-Hans/privacy /privacy/?lang=zh-Hans 302
+/zh-Hans / 301
+/zh-Hans/privacy /privacy/ 301
+/en?lang=en /en/ 301
 /* /404.html 404

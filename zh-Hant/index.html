@@ -1,14 +1,255 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant" dir="ltr" data-root="..">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fuse Beads Support</title>
-<meta http-equiv="refresh" content="0;url=../support/?lang=zh-Hans">
-<link rel="canonical" href="../support/">
-<script>localStorage.setItem("beadtime-lang", "zh-Hans"); location.replace("../support/?lang=zh-Hans");</script>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>技術支援 · 拼豆時光</title>
+  <meta name="description" content="拼豆時光已上架。這裡說明照片匯入、圖紙產生、材料、跟拼、備份、匯出，以及如何寫信給支援。App 完全離線，不收集資料。">
+  <meta name="theme-color" content="#F4EDE3">
+  <meta name="apple-itunes-app" content="app-id=6799906107">
+  <meta name="author" content="Shanghai Qishan Cultural Communication Co., Ltd.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="canonical" href="https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://weizhichao1027-collab.github.io/beadtime-site/sitemap.xml">
+  <link rel="alternate" type="text/plain" title="LLMs" href="https://weizhichao1027-collab.github.io/beadtime-site/llms.txt">
+  <link rel="alternate" hreflang="zh-Hans" href="https://weizhichao1027-collab.github.io/beadtime-site/support/">
+  <link rel="alternate" hreflang="en" href="https://weizhichao1027-collab.github.io/beadtime-site/en/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/">
+  <link rel="alternate" hreflang="ja" href="https://weizhichao1027-collab.github.io/beadtime-site/ja/">
+  <link rel="alternate" hreflang="ko" href="https://weizhichao1027-collab.github.io/beadtime-site/ko/">
+  <link rel="alternate" hreflang="es" href="https://weizhichao1027-collab.github.io/beadtime-site/es/">
+  <link rel="alternate" hreflang="fr" href="https://weizhichao1027-collab.github.io/beadtime-site/fr/">
+  <link rel="alternate" hreflang="de" href="https://weizhichao1027-collab.github.io/beadtime-site/de/">
+  <link rel="alternate" hreflang="pt-BR" href="https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/">
+  <link rel="alternate" hreflang="it" href="https://weizhichao1027-collab.github.io/beadtime-site/it/">
+  <link rel="alternate" hreflang="ru" href="https://weizhichao1027-collab.github.io/beadtime-site/ru/">
+  <link rel="alternate" hreflang="ar" href="https://weizhichao1027-collab.github.io/beadtime-site/ar/">
+  <link rel="alternate" hreflang="hi" href="https://weizhichao1027-collab.github.io/beadtime-site/hi/">
+  <link rel="alternate" hreflang="x-default" href="https://weizhichao1027-collab.github.io/beadtime-site/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="拼豆时光 / Fuse Beads">
+  <meta property="og:title" content="技術支援 · 拼豆時光">
+  <meta property="og:description" content="拼豆時光已上架。這裡說明照片匯入、圖紙產生、材料、跟拼、備份、匯出，以及如何寫信給支援。App 完全離線，不收集資料。">
+  <meta property="og:url" content="https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/">
+  <meta property="og:image" content="https://weizhichao1027-collab.github.io/beadtime-site/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="亞麻桌上的柯基拼豆板、鑷子、小碗和分格色豆">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:locale:alternate" content="ko_KR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="ar_SA">
+  <meta property="og:locale:alternate" content="hi_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術支援 · 拼豆時光">
+  <meta name="twitter:description" content="拼豆時光已上架。這裡說明照片匯入、圖紙產生、材料、跟拼、備份、匯出，以及如何寫信給支援。App 完全離線，不收集資料。">
+  <meta name="twitter:image" content="https://weizhichao1027-collab.github.io/beadtime-site/assets/img/og.png">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"},{"@type":"MobileApplication","name":"拼豆時光","alternateName":["拼豆时光","Fuse Beads","Fuse Beads: Pattern Maker"],"operatingSystem":"iOS 17.0 or later","applicationCategory":"DesignApplication","applicationSubCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"downloadUrl":"https://apps.apple.com/tw/app/id6799906107","installUrl":"https://apps.apple.com/tw/app/id6799906107","softwareVersion":"1.1","isAccessibleForFree":true,"inLanguage":["zh-Hans","en","zh-Hant","ja","ko","es","fr","de","pt-BR","it","ru","ar","hi"],"author":{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"},"publisher":{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"},"identifier":"com.weizhichao.beadday","url":"https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/home/"},{"@type":"WebSite","name":"拼豆时光 / Fuse Beads","url":"https://weizhichao1027-collab.github.io/beadtime-site/","inLanguage":["zh-Hans","en","zh-Hant","ja","ko","es","fr","de","pt-BR","it","ru","ar","hi"],"publisher":{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"}},{"@type":"WebPage","@id":"https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/","url":"https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/","name":"技術支援 · 拼豆時光","description":"拼豆時光已上架。這裡說明照片匯入、圖紙產生、材料、跟拼、備份、匯出，以及如何寫信給支援。App 完全離線，不收集資料。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://weizhichao1027-collab.github.io/beadtime-site/"},"dateModified":"2026-09-18","about":{"@type":"MobileApplication","name":"拼豆時光","alternateName":["拼豆时光","Fuse Beads","Fuse Beads: Pattern Maker"],"operatingSystem":"iOS 17.0 or later","applicationCategory":"DesignApplication","applicationSubCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"downloadUrl":"https://apps.apple.com/tw/app/id6799906107","installUrl":"https://apps.apple.com/tw/app/id6799906107","softwareVersion":"1.1","isAccessibleForFree":true,"inLanguage":["zh-Hans","en","zh-Hant","ja","ko","es","fr","de","pt-BR","it","ru","ar","hi"],"author":{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"},"publisher":{"@type":"Organization","name":"Shanghai Qishan Cultural Communication Co., Ltd.","alternateName":["上海岐山文化传播有限公司","Qishan"],"email":"281916057@qq.com","url":"https://weizhichao1027-collab.github.io/beadtime-site/"},"identifier":"com.weizhichao.beadday","url":"https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/home/"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"zh-Hant","url":"https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/","mainEntity":[{"@type":"Question","name":"照片會不會被上傳？","acceptedAnswer":{"@type":"Answer","text":"不會。你透過系統照片選擇器、相機或檔案提供的圖片，只在裝置上產生圖紙。智慧背景移除使用 Apple Vision 在本機工作，照片和遮罩都不會傳送到伺服器。"}},{"@type":"Question","name":"為什麼產生結果和我想的不一樣？","acceptedAnswer":{"@type":"Answer","text":"結果受原圖清晰度、裁切、板尺寸、顏色上限和細節模式影響。預設高品質路徑是 40×40、16 色。可先看即時預覽，產生後在確認頁對比原圖，或返回繼續調參。儲存後也能用原圖重新產生。"}},{"@type":"Question","name":"智慧背景移除怎麼用？","acceptedAnswer":{"@type":"Answer","text":"它預設關閉。打開後會在本機保護主體，並用連通背景判斷空豆位。若邊緣被切掉或背景仍在，關掉後再用手改空豆位，或換一張主體更清楚的照片。"}},{"@type":"Question","name":"色號能直接拿去買豆嗎？","acceptedAnswer":{"@type":"Answer","text":"色號是螢幕近似參考，不能當成廠商官方精確顏色。顯示器和材料批次都會有色差。大量採購前請對照品牌最新實物色卡。"}},{"@type":"Question","name":"匯出的 PNG 或 PDF 在哪裡？","acceptedAnswer":{"@type":"Answer","text":"從工作區或項目選單匯出。PNG 可儲存到照片（只申請加入權限，不會讀取圖庫）。PDF 可帶行列座標；58×58 等大圖會包含 20×20 分區頁。其他分享走系統分享面板。"}},{"@type":"Question","name":"項目找不到了或打不開？","acceptedAnswer":{"@type":"Answer","text":"資料在本機 Application Support/BeadTime。損壞項目會被隔離為 projects-invalid 檔案，其餘仍可打開。可先匯出備份。若提示庫檔案過大，原檔會被隔離且不會覆蓋。"}},{"@type":"Question","name":"備份如何匯入？","acceptedAnswer":{"@type":"Answer","text":"設定裡可匯出版本化 JSON 備份，再匯入合併。同一項目保留更新時間較新的版本。來自更新 App 版本的備份無法匯入。備份過大或項目過多也會被拒絕。"}},{"@type":"Question","name":"卸載後資料還在嗎？","acceptedAnswer":{"@type":"Answer","text":"不在。卸載會刪除沙盒裡的圖紙、預覽和跟拼進度。換機或刪除 App 前，請先匯出本地備份。"}},{"@type":"Question","name":"如何複製診斷資訊？","acceptedAnswer":{"@type":"Answer","text":"打開我的 → 設定與隱私 → 複製診斷資訊。內容包括 App 版本、裝置、系統和本地項目數，不含照片或圖紙。把它貼進支援郵件即可。"}},{"@type":"Question","name":"支援哪些語言？","acceptedAnswer":{"@type":"Answer","text":"英語、簡體中文、繁體中文、日語、韓語、西班牙語、法語、德語、巴西葡萄牙語、義大利語、俄語、阿拉伯語（從右到左）和印地語。可跟隨系統或在設定中固定。"}},{"@type":"Question","name":"相機權限用來做什麼？","acceptedAnswer":{"@type":"Answer","text":"僅在你選擇拍照產生圖紙時使用。照片同樣只在本機處理。App 不使用定位、麥克風、通訊錄或追蹤權限。"}},{"@type":"Question","name":"沒有網路能用嗎？","acceptedAnswer":{"@type":"Answer","text":"能。核心功能完全離線。打開本支援站或寄信才需要網路。App 本身不連接開發者伺服器。"}},{"@type":"Question","name":"App 是免費的嗎？","acceptedAnswer":{"@type":"Answer","text":"是。拼豆時光在 App Store 免費提供，沒有內購、訂閱或帳號。打開即可製作。"}},{"@type":"Question","name":"能在 iPad 或 Mac 上用嗎？","acceptedAnswer":{"@type":"Answer","text":"App 面向 iPhone，最低 iOS 17。App Store 發送未開放 iPad、Mac 或 Apple Vision Pro。請在 iPhone 上下載。"}},{"@type":"Question","name":"開發者是誰？","acceptedAnswer":{"@type":"Answer","text":"開發者是上海岐山文化傳播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。支援信箱是 281916057@qq.com。"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"把照片變成圖紙","description":"在首頁選擇照片轉圖紙，用系統相簿、相機或檔案選圖。先調裁切、板尺寸、顏色上限、細節模式和參考色板。預設高品質路徑是 40×40、16 色。智慧背景移除保持關閉，除非主體清晰且背景干擾大。看即時預覽後產生，確認頁可對比原圖，或返回繼續調參。","inLanguage":"zh-Hant","step":[{"@type":"HowToStep","name":"把照片變成圖紙","text":"在首頁選擇照片轉圖紙，用系統相簿、相機或檔案選圖。先調裁切、板尺寸、顏色上限、細節模式和參考色板。預設高品質路徑是 40×40、16 色。智慧背景移除保持關閉，除非主體清晰且背景干擾大。看即時預覽後產生，確認頁可對比原圖，或返回繼續調參。"},{"@type":"HowToStep","name":"統計材料並採購","text":"打開材料頁查看每種顏色的顆數。勾選家裡已有的顏色，按包裝規格估算還缺幾包，再複製採購清單。螢幕色號是近似參考，大量購買前請對照品牌最新實物色卡。"},{"@type":"HowToStep","name":"依顏色跟拼","text":"在跟拼裡選一個顏色，圖紙會只突顯該色。點選已放上的豆位記錄進度，查看總體完成度和下一個顏色。需要時打開螢幕常亮。進度保存在本機項目中。"},{"@type":"HowToStep","name":"匯出與備份","text":"從工作區或項目選單匯出帶行列座標的 PNG 或 PDF。58×58 等大圖會帶 20×20 分區頁。換機或卸載前，到「我的 → 設定與隱私」匯出 JSON 備份。卸載會刪除沙盒裡的全部圖紙。"}],"tool":{"@type":"HowToTool","name":"拼豆時光"}}</script>
 </head>
-<body>
-<p><a href="../support/?lang=zh-Hans">Continue</a></p>
+<body data-page="support" data-locale="zh-Hant">
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="home/">
+        <img class="brand-mark" src="../assets/img/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-name">
+          <strong>拼豆時光</strong>
+          <span>Fuse Beads</span>
+        </span>
+      </a>
+      <div class="nav-cluster" id="nav-cluster">
+        <nav class="site-nav" aria-label="主導覽">
+          <a href="home/" data-nav="home">官網</a>
+          <a href="./" data-nav="support" aria-current="page">支援</a>
+          <a href="privacy/" data-nav="privacy">隱私</a>
+        </nav>
+      </div>
+      <div class="header-tools">
+      <nav class="locale-picker" aria-label="語言">
+        <details>
+          <summary>繁體中文</summary>
+          <ul>
+          <li><a href="../support/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+          <li><a href="../en/" hreflang="en" lang="en">English</a></li>
+          <li><a href="./" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li>
+          <li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li>
+          <li><a href="../es/" hreflang="es" lang="es">Español</a></li>
+          <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="../pt-BR/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+          <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+          <li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li>
+          <li><a href="../ar/" hreflang="ar" lang="ar">العربية</a></li>
+          <li><a href="../hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          </ul>
+        </details>
+      </nav>
+        <a class="btn btn-store" href="https://apps.apple.com/tw/app/id6799906107">在 App Store 下載</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-cluster" data-open-label="打開選單" data-close-label="關閉選單">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+          <span class="nav-toggle-text">打開選單</span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+  </header>
+  <main id="main" class="wrap">
+    <header class="page-hero">
+      <h1>支援</h1>
+      <p>先看這些真實流程裡的問題。若仍無法解決，寫信到支援信箱，並附上 App 內複製的診斷資訊。</p>
+    </header>
+
+    <section class="contact-card">
+      <div>
+        <h2>聯絡支援</h2>
+        <p>沒有工單系統或承諾回覆時限。公開支援頁和信箱是同一入口。</p>
+        <p class="contact-mail">
+          <strong>支援信箱</strong><br>
+          <a href="mailto:281916057@qq.com">281916057@qq.com</a>
+        </p>
+      </div>
+      <div>
+        <h2>郵件請寫明</h2>
+        <ol>
+          <li>App 版本（設定頁可見）</li>
+          <li>iPhone 型號和 iOS 版本</li>
+          <li>重現步驟</li>
+          <li>設定裡複製的診斷資訊</li>
+        </ol>
+        <p class="contact-note">不要附帶含私人內容的原始照片。診斷資訊不包含照片或圖紙內容。</p>
+      </div>
+    </section>
+
+    <section class="download-band">
+      <h2>到哪裡下載</h2>
+      <p>拼豆時光已在 App Store 上架，面向 iPhone，要求 iOS 17 或更新系統。免費，無內購和訂閱。目前銷售範圍涵蓋 175 個國家或地區。</p>
+      <p><a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6799906107">在 App Store 下載</a></p>
+    </section>
+
+    <section class="guides" aria-labelledby="guides-heading">
+      <h2 id="guides-heading">製作步驟</h2>
+      <article id="guide-photo">
+        <h3>把照片變成圖紙</h3>
+        <p>在首頁選擇照片轉圖紙，用系統相簿、相機或檔案選圖。先調裁切、板尺寸、顏色上限、細節模式和參考色板。預設高品質路徑是 40×40、16 色。智慧背景移除保持關閉，除非主體清晰且背景干擾大。看即時預覽後產生，確認頁可對比原圖，或返回繼續調參。</p>
+      </article>
+      <article id="guide-materials">
+        <h3>統計材料並採購</h3>
+        <p>打開材料頁查看每種顏色的顆數。勾選家裡已有的顏色，按包裝規格估算還缺幾包，再複製採購清單。螢幕色號是近似參考，大量購買前請對照品牌最新實物色卡。</p>
+      </article>
+      <article id="guide-follow">
+        <h3>依顏色跟拼</h3>
+        <p>在跟拼裡選一個顏色，圖紙會只突顯該色。點選已放上的豆位記錄進度，查看總體完成度和下一個顏色。需要時打開螢幕常亮。進度保存在本機項目中。</p>
+      </article>
+      <article id="guide-backup">
+        <h3>匯出與備份</h3>
+        <p>從工作區或項目選單匯出帶行列座標的 PNG 或 PDF。58×58 等大圖會帶 20×20 分區頁。換機或卸載前，到「我的 → 設定與隱私」匯出 JSON 備份。卸載會刪除沙盒裡的全部圖紙。</p>
+      </article>
+    </section>
+
+    <section class="qa" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">常見問題</h2>
+        <article class="qa-item" id="faq-1">
+          <h3>照片會不會被上傳？</h3>
+          <p>不會。你透過系統照片選擇器、相機或檔案提供的圖片，只在裝置上產生圖紙。智慧背景移除使用 Apple Vision 在本機工作，照片和遮罩都不會傳送到伺服器。</p>
+        </article>
+        <article class="qa-item" id="faq-2">
+          <h3>為什麼產生結果和我想的不一樣？</h3>
+          <p>結果受原圖清晰度、裁切、板尺寸、顏色上限和細節模式影響。預設高品質路徑是 40×40、16 色。可先看即時預覽，產生後在確認頁對比原圖，或返回繼續調參。儲存後也能用原圖重新產生。</p>
+        </article>
+        <article class="qa-item" id="faq-3">
+          <h3>智慧背景移除怎麼用？</h3>
+          <p>它預設關閉。打開後會在本機保護主體，並用連通背景判斷空豆位。若邊緣被切掉或背景仍在，關掉後再用手改空豆位，或換一張主體更清楚的照片。</p>
+        </article>
+        <article class="qa-item" id="faq-4">
+          <h3>色號能直接拿去買豆嗎？</h3>
+          <p>色號是螢幕近似參考，不能當成廠商官方精確顏色。顯示器和材料批次都會有色差。大量採購前請對照品牌最新實物色卡。</p>
+        </article>
+        <article class="qa-item" id="faq-5">
+          <h3>匯出的 PNG 或 PDF 在哪裡？</h3>
+          <p>從工作區或項目選單匯出。PNG 可儲存到照片（只申請加入權限，不會讀取圖庫）。PDF 可帶行列座標；58×58 等大圖會包含 20×20 分區頁。其他分享走系統分享面板。</p>
+        </article>
+        <article class="qa-item" id="faq-6">
+          <h3>項目找不到了或打不開？</h3>
+          <p>資料在本機 Application Support/BeadTime。損壞項目會被隔離為 projects-invalid 檔案，其餘仍可打開。可先匯出備份。若提示庫檔案過大，原檔會被隔離且不會覆蓋。</p>
+        </article>
+        <article class="qa-item" id="faq-7">
+          <h3>備份如何匯入？</h3>
+          <p>設定裡可匯出版本化 JSON 備份，再匯入合併。同一項目保留更新時間較新的版本。來自更新 App 版本的備份無法匯入。備份過大或項目過多也會被拒絕。</p>
+        </article>
+        <article class="qa-item" id="faq-8">
+          <h3>卸載後資料還在嗎？</h3>
+          <p>不在。卸載會刪除沙盒裡的圖紙、預覽和跟拼進度。換機或刪除 App 前，請先匯出本地備份。</p>
+        </article>
+        <article class="qa-item" id="faq-9">
+          <h3>如何複製診斷資訊？</h3>
+          <p>打開我的 → 設定與隱私 → 複製診斷資訊。內容包括 App 版本、裝置、系統和本地項目數，不含照片或圖紙。把它貼進支援郵件即可。</p>
+        </article>
+        <article class="qa-item" id="faq-10">
+          <h3>支援哪些語言？</h3>
+          <p>英語、簡體中文、繁體中文、日語、韓語、西班牙語、法語、德語、巴西葡萄牙語、義大利語、俄語、阿拉伯語（從右到左）和印地語。可跟隨系統或在設定中固定。</p>
+        </article>
+        <article class="qa-item" id="faq-11">
+          <h3>相機權限用來做什麼？</h3>
+          <p>僅在你選擇拍照產生圖紙時使用。照片同樣只在本機處理。App 不使用定位、麥克風、通訊錄或追蹤權限。</p>
+        </article>
+        <article class="qa-item" id="faq-12">
+          <h3>沒有網路能用嗎？</h3>
+          <p>能。核心功能完全離線。打開本支援站或寄信才需要網路。App 本身不連接開發者伺服器。</p>
+        </article>
+        <article class="qa-item" id="faq-13">
+          <h3>App 是免費的嗎？</h3>
+          <p>是。拼豆時光在 App Store 免費提供，沒有內購、訂閱或帳號。打開即可製作。</p>
+        </article>
+        <article class="qa-item" id="faq-14">
+          <h3>能在 iPad 或 Mac 上用嗎？</h3>
+          <p>App 面向 iPhone，最低 iOS 17。App Store 發送未開放 iPad、Mac 或 Apple Vision Pro。請在 iPhone 上下載。</p>
+        </article>
+        <article class="qa-item" id="faq-15">
+          <h3>開發者是誰？</h3>
+          <p>開發者是上海岐山文化傳播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。支援信箱是 281916057@qq.com。</p>
+        </article>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>拼豆時光</strong>
+        <p>Fuse Beads</p>
+      </div>
+      <div>
+        <h2>瀏覽</h2>
+        <ul>
+          <li><a href="home/">官網</a></li>
+          <li><a href="https://apps.apple.com/tw/app/id6799906107">在 App Store 下載</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>說明</h2>
+        <ul>
+          <li><a href="./">支援</a></li>
+          <li><a href="privacy/">隱私</a></li>
+          <li><a href="mailto:281916057@qq.com">281916057@qq.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="wrap legal-note">2026 上海岐山文化傳播有限公司。拼豆時光 / Fuse Beads。螢幕顏色是近似值。Perler、Hama、Artkal 是各自權利人的商標。</p>
+  </footer>
+  <script src="../assets/js/site.js"></script>
 </body>
 </html>

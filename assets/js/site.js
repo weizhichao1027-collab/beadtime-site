@@ -1,36 +1,36 @@
 (function () {
-  const STORAGE_KEY = "beadtime-lang";
-  const I18N = window.BEADTIME_I18N || {};
-  const rawRoot = document.documentElement.getAttribute("data-root");
-  const root = (rawRoot == null ? "." : rawRoot).replace(/\/$/, "");
+  const rootAttr = document.documentElement.getAttribute("data-root");
+  const root = rootAttr == null || rootAttr === "" ? "." : rootAttr.replace(/\/$/, "");
   const page = document.body.dataset.page || "home";
 
-  function detectLang() {
+  const LANG_DEST = {
+    en: { home: "en/home/", support: "en/", privacy: "en/privacy/" },
+    "zh-Hans": { home: "", support: "support/", privacy: "privacy/" },
+    zh: { home: "", support: "support/", privacy: "privacy/" },
+    "zh-CN": { home: "", support: "support/", privacy: "privacy/" },
+    "zh-Hant": { home: "zh-Hant/home/", support: "zh-Hant/", privacy: "zh-Hant/privacy/" },
+    ja: { home: "ja/home/", support: "ja/", privacy: "ja/privacy/" },
+    ko: { home: "ko/home/", support: "ko/", privacy: "ko/privacy/" },
+    de: { home: "de/home/", support: "de/", privacy: "de/privacy/" },
+    fr: { home: "fr/home/", support: "fr/", privacy: "fr/privacy/" },
+    es: { home: "es/home/", support: "es/", privacy: "es/privacy/" },
+    it: { home: "it/home/", support: "it/", privacy: "it/privacy/" },
+    "pt-BR": { home: "pt-BR/home/", support: "pt-BR/", privacy: "pt-BR/privacy/" },
+    ru: { home: "ru/home/", support: "ru/", privacy: "ru/privacy/" },
+    ar: { home: "ar/home/", support: "ar/", privacy: "ar/privacy/" },
+    hi: { home: "hi/home/", support: "hi/", privacy: "hi/privacy/" }
+  };
+
+  function redirectLegacyLang() {
     const query = new URLSearchParams(location.search).get("lang");
-    if (query === "zh" || query === "zh-Hans" || query === "zh-CN") return "zh-Hans";
-    if (query === "en") return "en";
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "zh-Hans" || stored === "en") return stored;
-    const nav = (navigator.language || "en").toLowerCase();
-    return nav.startsWith("zh") ? "zh-Hans" : "en";
-  }
-
-  let lang = detectLang();
-  let faqIndex = 1;
-  let scrollLockY = 0;
-
-  function t(key) {
-    return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || key;
-  }
-
-  function href(path) {
-    const clean = path.replace(/^\//, "");
-    if (root === "") return "/" + clean;
-    return root + "/" + clean;
-  }
-
-  function asset(path) {
-    return href(path.replace(/^\//, ""));
+    if (!query || !LANG_DEST[query]) return;
+    const dest = LANG_DEST[query][page];
+    if (dest == null) return;
+    const next = dest === "" ? root + "/" : root + "/" + dest;
+    const here = location.pathname.replace(/index\.html$/, "");
+    const targetPath = new URL(next, location.href).pathname.replace(/index\.html$/, "");
+    if (here.replace(/\/$/, "") === targetPath.replace(/\/$/, "")) return;
+    location.replace(next);
   }
 
   function desktopNav() {
@@ -55,6 +55,8 @@
     }
   }
 
+  let scrollLockY = 0;
+
   function isNavOpen() {
     return Boolean(document.querySelector(".site-header.is-open"));
   }
@@ -76,11 +78,11 @@
   function syncToggle(open) {
     const toggle = document.querySelector(".nav-toggle");
     if (!toggle) return;
-    const label = t(open ? "navClose" : "navOpen");
+    const label = open ? toggle.dataset.closeLabel : toggle.dataset.openLabel;
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", label);
-    const text = toggle.querySelector("[data-i18n]");
-    if (text) text.textContent = label;
+    if (label) toggle.setAttribute("aria-label", label);
+    const text = toggle.querySelector(".nav-toggle-text");
+    if (text && label) text.textContent = label;
   }
 
   function setNav(open) {
@@ -98,111 +100,6 @@
 
   function closeNav() {
     setNav(false);
-  }
-
-  function apply() {
-    document.documentElement.lang = lang === "zh-Hans" ? "zh-Hans" : "en";
-    document.querySelectorAll("[data-i18n]").forEach((node) => {
-      node.textContent = t(node.dataset.i18n);
-    });
-    document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
-      node.setAttribute("alt", t(node.dataset.i18nAlt));
-    });
-    const titleKey = document.body.dataset.titleKey;
-    if (titleKey) document.title = t(titleKey);
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc && document.body.dataset.descKey) {
-      desc.setAttribute("content", t(document.body.dataset.descKey));
-    }
-    document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(btn.dataset.langBtn === lang));
-    });
-    const nav = document.querySelector(".site-nav");
-    if (nav) nav.setAttribute("aria-label", t("navAria"));
-    const langSwitch = document.querySelector(".lang-switch");
-    if (langSwitch) langSwitch.setAttribute("aria-label", t("langAria"));
-    const faqList = document.getElementById("faq-list");
-    if (faqList) faqList.setAttribute("aria-label", t("faqTitle"));
-    const toc = document.querySelector(".toc");
-    if (toc) toc.setAttribute("aria-label", t("tocLabel"));
-    syncToggle(isNavOpen());
-    renderFaq();
-  }
-
-  function setLang(next) {
-    lang = next;
-    localStorage.setItem(STORAGE_KEY, next);
-    const url = new URL(location.href);
-    url.searchParams.set("lang", next);
-    history.replaceState({}, "", url);
-    apply();
-  }
-
-  function mountChrome() {
-    const header = document.getElementById("site-header");
-    const footer = document.getElementById("site-footer");
-    if (header) {
-      header.className = "site-header";
-      header.innerHTML = `
-        <div class="wrap header-inner">
-          <a class="brand" href="${href("index.html")}">
-            <img class="brand-mark" src="${asset("assets/img/favicon.svg")}" alt="" width="36" height="36">
-            <span class="brand-name">
-              <strong data-i18n="brandZh"></strong>
-              <span data-i18n="brandEn"></span>
-            </span>
-          </a>
-          <div class="nav-cluster" id="nav-cluster">
-            <nav class="site-nav">
-              <a href="${href("index.html")}" data-nav="home" data-i18n="navHome"></a>
-              <a href="${href("support/")}" data-nav="support" data-i18n="navSupport"></a>
-              <a href="${href("privacy/")}" data-nav="privacy" data-i18n="navPrivacy"></a>
-            </nav>
-          </div>
-          <div class="header-tools">
-            <div class="lang-switch" role="group">
-              <button type="button" data-lang-btn="zh-Hans" data-i18n="langZh"></button>
-              <button type="button" data-lang-btn="en" data-i18n="langEn"></button>
-            </div>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-cluster">
-              <span class="nav-toggle-bars" aria-hidden="true"></span>
-              <span data-i18n="navOpen"></span>
-            </button>
-          </div>
-        </div>
-        <div class="nav-backdrop" id="nav-backdrop" hidden></div>`;
-      const current = header.querySelector(`[data-nav="${page}"]`);
-      if (current) current.setAttribute("aria-current", "page");
-      header.querySelector(".nav-toggle").addEventListener("click", () => {
-        setNav(!header.classList.contains("is-open"));
-      });
-    }
-    if (footer) {
-      footer.className = "site-footer";
-      footer.innerHTML = `
-        <div class="wrap footer-grid">
-          <div>
-            <strong data-i18n="brandZh"></strong>
-            <p data-i18n="brandEn"></p>
-          </div>
-          <div>
-            <h2 data-i18n="footerExplore"></h2>
-            <ul>
-              <li><a href="${href("index.html")}" data-i18n="navHome"></a></li>
-              <li><a href="https://apps.apple.com/app/id6799906107" data-i18n="ctaStore"></a></li>
-            </ul>
-          </div>
-          <div>
-            <h2 data-i18n="footerHelp"></h2>
-            <ul>
-              <li><a href="${href("support/")}" data-i18n="navSupport"></a></li>
-              <li><a href="${href("privacy/")}" data-i18n="navPrivacy"></a></li>
-              <li><a href="mailto:281916057@qq.com">281916057@qq.com</a></li>
-            </ul>
-          </div>
-        </div>
-        <p class="wrap legal-note" data-i18n="footerCopy"></p>`;
-    }
   }
 
   const BEAD = {
@@ -255,15 +152,15 @@
 
   function drawPegboard(host, name) {
     if (!host) return;
-    const PEG = PATTERNS[name] || PATTERNS.fox;
-    const cols = PEG[0].length;
-    const rows = PEG.length;
+    const peg = PATTERNS[name] || PATTERNS.fox;
+    const cols = peg[0].length;
+    const rows = peg.length;
     const cell = 22;
     const pad = 16;
     const width = cols * cell + pad * 2;
     const height = rows * cell + pad * 2;
     let marks = "";
-    PEG.forEach((row, y) => {
+    peg.forEach((row, y) => {
       [...row].forEach((ch, x) => {
         const cx = pad + x * cell + cell / 2;
         const cy = pad + y * cell + cell / 2;
@@ -279,43 +176,37 @@
     host.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-hidden="true">${marks}</svg>`;
   }
 
-  function renderFaq() {
-    const list = document.getElementById("faq-list");
-    const panel = document.getElementById("faq-panel");
-    if (!list || !panel) return;
-    const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    list.innerHTML = keys
-      .map((n) => {
-        const selected = n === faqIndex;
-        return `<div class="ask-item${selected ? " is-current" : ""}">
-          <button type="button" id="faq-q-${n}" aria-pressed="${selected}" aria-expanded="${selected}" aria-controls="faq-a-${n}" data-q="${n}">${t("q" + n)}</button>
-          <div class="faq-inline" id="faq-a-${n}">
-            <p>${t("a" + n)}</p>
-          </div>
-        </div>`;
-      })
-      .join("");
-    panel.innerHTML = `<h2>${t("q" + faqIndex)}</h2><p>${t("a" + faqIndex)}</p>`;
+  function fixLostLinks() {
+    if (document.body.dataset.page !== "lost") return;
+    if (location.pathname.startsWith("/beadtime-site")) return;
+    document.querySelectorAll('.lost-actions a[href^="/beadtime-site"]').forEach((anchor) => {
+      const next = anchor.getAttribute("href").replace("/beadtime-site", "") || "/";
+      anchor.setAttribute("href", next);
+    });
+  }
+
+  redirectLegacyLang();
+  fixLostLinks();
+
+  const toggle = document.querySelector(".nav-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      setNav(!document.querySelector(".site-header")?.classList.contains("is-open"));
+    });
   }
 
   document.addEventListener("click", (event) => {
-    const langBtn = event.target.closest("[data-lang-btn]");
-    if (langBtn) {
-      setLang(langBtn.dataset.langBtn);
-      return;
-    }
-    const q = event.target.closest("#faq-list button[data-q]");
-    if (q) {
-      faqIndex = Number(q.dataset.q);
-      renderFaq();
-      return;
-    }
     if (event.target.closest(".site-nav a")) {
       closeNav();
       return;
     }
     if (event.target.closest("#nav-backdrop") || event.target.classList.contains("nav-backdrop")) {
       closeNav();
+    }
+    if (!event.target.closest(".locale-picker")) {
+      document.querySelectorAll(".locale-picker details[open]").forEach((node) => {
+        node.removeAttribute("open");
+      });
     }
   });
 
@@ -326,11 +217,8 @@
   });
 
   window.addEventListener("resize", placeNav);
-
-  mountChrome();
   placeNav();
   drawPegboard(document.getElementById("pegboard"), "fox");
   drawPegboard(document.getElementById("loop-board"), "bloom");
   drawPegboard(document.getElementById("lost-board"), "mini");
-  apply();
 })();

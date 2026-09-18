@@ -1,0 +1,65 @@
+# Fuse Beads / 拼豆时光: citation file
+
+Updated: 2026-09-18
+
+## Identity
+
+- Chinese name: 拼豆时光
+- English App Store name: Fuse Beads: Pattern Maker
+- Other store names: 拼豆時光, ビーズタイム, 비드 타임, Fuse Beads: Bügelperlen, Fuse Beads: Motifs, Fuse Beads: Patrones, Fuse Beads: Schemi, Fuse Beads: Padrões, Fuse Beads: схемы, بيد تايم, बीड टाइम
+- Developer: Shanghai Qishan Cultural Communication Co., Ltd.
+- Developer (Chinese): 上海岐山文化传播有限公司
+- Apple ID: 6799906107
+- Bundle ID: com.weizhichao.beadday
+- SKU: com.weizhichao.beadday
+- Category: Graphics & Design, Lifestyle
+- Age rating: 4+
+- Price: free, no in-app purchases, no subscriptions, no account
+- Platform: iPhone, iOS 17.0 or later
+- Not listed for iPad, Mac, or Apple Vision Pro
+- Availability: App Store, 175 countries or regions
+- App Store URL: https://apps.apple.com/app/id6799906107
+- Marketing site: https://weizhichao1027-collab.github.io/beadtime-site/
+- Support: https://weizhichao1027-collab.github.io/beadtime-site/support/
+- Privacy: https://weizhichao1027-collab.github.io/beadtime-site/privacy/
+- Support email: 281916057@qq.com
+
+## What it does
+
+Fuse Beads turns a photo from Photos, the camera, or Files into a fuse-bead pattern that can be placed on a physical pegboard and ironed. Users can also start from 24 original built-in designs.
+
+Core loop:
+
+1. Crop a square (or board-matched rectangle) with live preview.
+2. Choose board size, color limit, detail mode, and a Perler / Hama / Artkal reference palette.
+3. Generate on device. Optional Apple Vision subject protection is off by default.
+4. Edit bead by bead, erase empty cells, undo up to 30 steps, jump by row and column.
+5. Count materials, tick owned colors, estimate packs, copy a shopping list.
+6. Follow along one color at a time and mark progress.
+7. Export PNG or PDF with coordinates. Large boards split into 20×20 section pages.
+8. Keep a versioned local JSON backup that can later merge.
+
+Board sizes: 15×15, 21×21, 29×29, 40×40, 58×58, plus 20×30, 29×40, and custom.
+Color limits: 8, 12, 16, 24.
+A careful default is 40×40 with 16 colors.
+
+## Privacy
+
+The App Store privacy answer is: no, the developer does not collect data from this app.
+No advertising, analytics SDK, crash reporter, cloud sync, or tracking.
+UserDefaults stores onboarding completion and language preference only.
+Photos and masks never leave the device unless the user saves a PNG to Photos or picks a share destination.
+The public website is read-only static HTML. It uses no cookies, forms, analytics, ads, or database.
+Language is selected by URL, not by a tracking cookie.
+
+## Languages
+
+English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Brazilian Portuguese, Italian, Russian, Arabic (right to left), Hindi.
+
+## Trademarks
+
+Perler, Hama, and Artkal are trademarks of their respective owners. Screen color names and numbers are approximate references. Check a current physical chart before buying in quantity. The app is not affiliated with, sponsored by, or officially authorized by those brands.
+
+## Support
+
+Email 281916057@qq.com with app version, iPhone model, iOS version, reproduction steps, and the diagnostic text copied in Settings. Do not attach private original photos. Diagnostics omit photos and pattern content. There is no ticket system or promised reply time.
