@@ -66,6 +66,11 @@ def file_for(url_path: str) -> Path:
     return ROOT / url_path.strip("/") / "index.html"
 
 
+def versioned_asset(page: str, resource: str) -> str:
+    digest = hashlib.sha256((ROOT / resource).read_bytes()).hexdigest()[:12]
+    return asset_href(page, resource) + "?v=" + digest
+
+
 def ld_json(payload) -> str:
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     return blob.replace("</", "<\\/")
@@ -164,7 +169,7 @@ def head(
     copy = copy_for(locale)
     canonical = abs_url(canonical_path or page)
     image = abs_url("/assets/img/og.png")
-    css = asset_href(page, "assets/css/site.css")
+    css = versioned_asset(page, "assets/css/site.css")
     icon = asset_href(page, "assets/img/favicon.svg")
     icon32 = asset_href(page, "assets/img/favicon-32.png")
     apple = asset_href(page, "assets/img/apple-touch-icon.png")
@@ -321,7 +326,7 @@ def chrome_footer(locale: str, page: str) -> str:
     support = rel_href(page, page_path(locale, "support"))
     privacy = rel_href(page, page_path(locale, "privacy"))
     store = LOCALES[locale]["store"]
-    js = asset_href(page, "assets/js/site.js")
+    js = versioned_asset(page, "assets/js/site.js")
     return f"""  <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
