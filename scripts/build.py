@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import base64
+import hashlib
 import json
 import sys
 from html import escape
@@ -11,6 +13,7 @@ from pathlib import Path
 from config import (
     APP_STORE_ID,
     APP_STORE_UNIVERSAL,
+    APP_VERSION,
     BASE_PATH,
     BUNDLE_ID,
     COPYRIGHT_YEAR,
@@ -71,10 +74,12 @@ def ld_json(payload) -> str:
 def organization() -> dict:
     return {
         "@type": "Organization",
+        "@id": abs_url("/#organization"),
         "name": ORG_EN,
         "alternateName": [ORG_ZH, "Qishan"],
         "email": SUPPORT_EMAIL,
         "url": abs_url("/"),
+        "logo": abs_url("/assets/img/apple-touch-icon.png"),
     }
 
 
@@ -92,9 +97,14 @@ def software_app(locale: str) -> dict:
             unique.append(name)
     return {
         "@type": "MobileApplication",
+        "@id": abs_url(page_path(locale, "home")) + "#app",
         "name": meta["store_name"],
         "alternateName": unique[1:],
-        "operatingSystem": "iOS 17.0 or later",
+        "operatingSystem": "iOS 17.0 / iPadOS 17.0 or later",
+        "availableOnDevice": ["iPhone", "iPad"],
+        "description": copy_for(locale)["home"]["description"],
+        "image": abs_url("/assets/img/apple-touch-icon.png"),
+        "sameAs": [meta["store"]],
         "applicationCategory": "DesignApplication",
         "applicationSubCategory": "LifestyleApplication",
         "offers": {
@@ -105,7 +115,7 @@ def software_app(locale: str) -> dict:
         },
         "downloadUrl": meta["store"],
         "installUrl": meta["store"],
-        "softwareVersion": "1.1",
+        "softwareVersion": APP_VERSION,
         "isAccessibleForFree": True,
         "inLanguage": [LOCALES[item]["bcp47"] for item in LOCALE_ORDER],
         "author": organization(),
@@ -167,6 +177,7 @@ def head(
                 software_app(locale),
                 {
                     "@type": "WebSite",
+                    "@id": abs_url("/#website"),
                     "name": "拼豆时光 / Fuse Beads",
                     "url": abs_url("/"),
                     "inLanguage": [LOCALES[item]["bcp47"] for item in LOCALE_ORDER],
@@ -179,7 +190,7 @@ def head(
                     "name": title,
                     "description": description,
                     "inLanguage": meta["bcp47"],
-                    "isPartOf": {"@id": abs_url("/")},
+                    "isPartOf": {"@id": abs_url("/#website")},
                     "dateModified": UPDATED,
                     "about": software_app(locale),
                 },
@@ -188,16 +199,28 @@ def head(
     ]
     if extra_ld:
         schemas.extend(extra_ld if isinstance(extra_ld, list) else [extra_ld])
+    if kind in {"support", "privacy"}:
+        schemas.append({
+            "@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": copy["chrome"]["nav_home"], "item": abs_url(page_path(locale, "home"))},
+                {"@type": "ListItem", "position": 2, "name": title, "item": canonical},
+            ],
+        })
+    # Permit only the generated JSON-LD blocks under the strict script policy.
+    hashes = " ".join("'sha256-" + base64.b64encode(hashlib.sha256(ld_json(item).encode()).digest()).decode() + "'" for item in schemas)
+    csp = CSP.replace("script-src 'self'", "script-src 'self' " + hashes)
     ld_tags = "\n".join(
         f'  <script type="application/ld+json">{ld_json(item)}</script>' for item in schemas
     )
-    robots_tag = f'  <meta name="robots" content="{robots}">\n' if robots else ""
+    robots = robots or ("noindex,follow" if canonical_path and canonical_path != page else "index,follow,max-image-preview:large")
+    robots_tag = f'  <meta name="robots" content="{robots}">\n'
     root = "." if page == "/" else "/".join([".."] * (page.strip("/").count("/") + 1))
     return f"""<!DOCTYPE html>
 <html lang="{escape(meta["html_lang"])}" dir="{escape(meta["dir"])}" data-root="{root}">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="{CSP}">
+  <meta http-equiv="Content-Security-Policy" content="{csp}">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(title)}</title>
@@ -360,6 +383,26 @@ def render_home(locale: str, page: str, canonical: str | None = None) -> str:
     cat = asset_href(page, "assets/img/cat-project.jpg")
     daisy = asset_href(page, "assets/img/daisy-idea.jpg")
     cloud = "".join(f"<span>{escape(name)}</span>" for name in LOCALE_CLOUD)
+    release = copy["release"]
+    shots_locale = "zh-Hans" if locale.startswith("zh") else "en"
+    shots = []
+    for name, label, device, width, height in (
+        ("editor", home["loop2_title"], "iPhone", 700, 995),
+        ("materials", copy["support"]["g2_title"], "iPhone", 700, 995),
+        ("follow-ipad", copy["support"]["g3_title"], "iPad", 1024, 1365),
+    ):
+        src = asset_href(page, f"assets/img/screenshots/{shots_locale}-{name}.webp")
+        shots.append(f'<figure><img src="{escape(src)}" alt="{escape(label)} ({device})" width="{width}" height="{height}" loading="lazy" decoding="async"><figcaption>{escape(label)} <span>{device}</span></figcaption></figure>')
+    app_preview = f'''<section class="section wrap" aria-labelledby="screenshots-heading">
+      <h2 id="screenshots-heading">{escape(release["screenshots_title"])}</h2>
+      <p class="prose">{escape(release["screenshots_body"])}</p>
+      <div class="app-gallery">{"".join(shots)}</div>
+      <div class="release-details">
+        <dl><div><dt>{escape(release["version_label"])}</dt><dd>{APP_VERSION}</dd></div>
+        <div><dt>{escape(release["devices_label"])}</dt><dd>{escape(release["devices"])}</dd></div></dl>
+        <div><h3>{escape(release["accessibility_title"])}</h3><p>{escape(release["accessibility_body"])}</p></div>
+      </div>
+    </section>'''
     main = f"""  <main id="main">
     <section class="wrap hero">
       <div>
@@ -379,6 +422,8 @@ def render_home(locale: str, page: str, canonical: str | None = None) -> str:
       <div class="pegboard" id="pegboard" aria-hidden="true"></div>
     </section>
 
+{app_preview}
+
     <section class="section">
       <div class="wrap entity">
         <h2>{escape(home["def_title"])}</h2>
@@ -393,7 +438,7 @@ def render_home(locale: str, page: str, canonical: str | None = None) -> str:
           <p class="prose">{escape(home["story_body"])}</p>
         </div>
         <figure class="story-photo">
-          <img src="{escape(craft)}" alt="{escape(home["story_alt"])}" width="1400" height="1077">
+          <img src="{escape(craft)}" alt="{escape(home["story_alt"])}" width="1400" height="1077" loading="lazy" decoding="async">
         </figure>
       </div>
     </section>
@@ -415,7 +460,7 @@ def render_home(locale: str, page: str, canonical: str | None = None) -> str:
           </article>
           <article class="loop-row">
             <figure class="loop-visual">
-              <img src="{escape(cat)}" alt="{escape(home["loop2_alt"])}" width="1100" height="1100">
+              <img src="{escape(cat)}" alt="{escape(home["loop2_alt"])}" width="1100" height="1100" loading="lazy" decoding="async">
             </figure>
             <div class="loop-copy">
               <h3>{escape(home["loop2_title"])}</h3>
@@ -424,7 +469,7 @@ def render_home(locale: str, page: str, canonical: str | None = None) -> str:
           </article>
           <article class="loop-row">
             <figure class="loop-visual">
-              <img src="{escape(daisy)}" alt="{escape(home["loop3_alt"])}" width="1100" height="1100">
+              <img src="{escape(daisy)}" alt="{escape(home["loop3_alt"])}" width="1100" height="1100" loading="lazy" decoding="async">
             </figure>
             <div class="loop-copy">
               <h3>{escape(home["loop3_title"])}</h3>
@@ -528,14 +573,12 @@ def howto_schema(locale: str) -> dict:
     return {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": support["g1_title"],
-        "description": support["g1_body"],
+        "name": support["guides_title"],
+        "description": support["description"],
         "inLanguage": LOCALES[locale]["bcp47"],
         "step": [
-            {"@type": "HowToStep", "name": support["g1_title"], "text": support["g1_body"]},
-            {"@type": "HowToStep", "name": support["g2_title"], "text": support["g2_body"]},
-            {"@type": "HowToStep", "name": support["g3_title"], "text": support["g3_body"]},
-            {"@type": "HowToStep", "name": support["g4_title"], "text": support["g4_body"]},
+            {"@type": "HowToStep", "name": support[f"g{n}_title"], "text": support[f"g{n}_body"], "url": abs_url(page_path(locale, "support")) + "#guide-" + anchor}
+            for n, anchor in enumerate(("photo", "materials", "follow", "backup"), 1)
         ],
         "tool": {"@type": "HowToTool", "name": LOCALES[locale]["store_name"]},
     }
@@ -546,6 +589,9 @@ def render_support(locale: str, page: str) -> str:
     support = copy["support"]
     chrome = copy["chrome"]
     store = LOCALES[locale]["store"]
+    release = copy["release"]
+    topics = [("#guide-photo", support["g1_title"]), ("#guide-materials", support["g2_title"]), ("#guide-follow", support["g3_title"]), ("#guide-backup", support["g4_title"]), ("#faq-heading", support["faq_title"]), ("#contact-support", support["contact_title"])]
+    toc = "".join(f'<li><a href="{href}">{escape(label)}</a></li>' for href, label in topics)
     faqs = []
     for index, (question, answer) in enumerate(support["faqs"], start=1):
         faqs.append(
@@ -556,11 +602,14 @@ def render_support(locale: str, page: str) -> str:
         )
     main = f"""  <main id="main" class="wrap">
     <header class="page-hero">
-      <h1>{escape(chrome["nav_support"])}</h1>
+      <h1>{escape(support["title"])}</h1>
       <p>{escape(support["lead"])}</p>
+      <p class="release-note">{escape(release["version_label"])}: {APP_VERSION}<br>{escape(release["devices"])}</p>
     </header>
 
-    <section class="contact-card">
+    <nav class="support-topics" aria-label="{escape(support["guides_title"])}"><ul>{toc}</ul></nav>
+
+    <section class="contact-card" id="contact-support">
       <div>
         <h2>{escape(support["contact_title"])}</h2>
         <p>{escape(support["contact_body"])}</p>
@@ -628,6 +677,8 @@ def render_privacy(locale: str, page: str, canonical: str | None = None) -> str:
         extra = ""
         if anchor == "contact":
             extra = f'\n          <p><a href="mailto:{SUPPORT_EMAIL}">{SUPPORT_EMAIL}</a></p>'
+        elif anchor == "third":
+            extra = '\n          <p><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" lang="en">GitHub Privacy Statement</a></p>'
         sections.append(
             f"""        <section id="{escape(anchor)}">
           <h2>{escape(title)}</h2>
@@ -647,7 +698,7 @@ def render_privacy(locale: str, page: str, canonical: str | None = None) -> str:
     }
     main = f"""  <main id="main" class="wrap">
     <header class="page-hero">
-      <h1>{escape(chrome["nav_privacy"])}</h1>
+      <h1>{escape(privacy["title"])}</h1>
       <p>{escape(privacy["lead"])}</p>
       <p class="privacy-updated">{escape(privacy["updated"])}</p>
     </header>
@@ -754,7 +805,6 @@ def robots() -> str:
     for agent in agents:
         lines.extend([f"User-agent: {agent}", "Allow: /", ""])
     lines.append(f"Sitemap: {SITE}/sitemap.xml")
-    lines.append(f"LLMs: {SITE}/llms.txt")
     return "\n".join(lines) + "\n"
 
 
@@ -765,9 +815,11 @@ def llms_txt() -> str:
             pages.append(f"- [{label} / {LOCALES[locale]['native']}]({abs_url(page_path(locale, kind))})")
     return f"""# Fuse Beads / 拼豆时光
 
-> Offline iPhone app that turns a photo into an ironable fuse-bead pattern. Now on the App Store. Free. No account. No data collection.
+> Offline iPhone and iPad app that turns a photo into an ironable fuse-bead pattern. Available on the App Store. Free. No account. The developer does not collect data from the app.
 
-The Chinese product name is 拼豆时光. The English App Store name is Fuse Beads: Pattern Maker. Developer: {ORG_EN} ({ORG_ZH}). Apple ID {APP_STORE_ID}. Bundle ID `{BUNDLE_ID}`. iPhone, iOS 17 or later. Sold in 175 countries or regions. No in-app purchases.
+Updated: {UPDATED}. Current released version: {APP_VERSION} (App Store Connect verified 2026-10-30, READY_FOR_SALE, Build 8).
+
+The Chinese product name is 拼豆时光. The English App Store name is Fuse Beads: Pattern Maker. Developer: {ORG_EN} ({ORG_ZH}). Apple ID {APP_STORE_ID}. Bundle ID `{BUNDLE_ID}`. iPhone and iPad, iOS / iPadOS 17 or later. Free, no in-app purchases or subscriptions. Local availability follows the App Store listing.
 
 ## Primary pages
 
@@ -791,13 +843,16 @@ The Chinese product name is 拼豆时光. The English App Store name is Fuse Bea
 - Color codes for Perler, Hama Midi, and Artkal are on-screen references, not official factory matches.
 - The app is not affiliated with, sponsored by, or officially authorized by Perler, Hama, or Artkal.
 - Uninstalling deletes local patterns. Export a JSON backup from Settings first.
+- No app-provided cloud sync. System device backups, including iCloud, may include app data according to user settings.
+- Preferences include onboarding, language, generation settings, and pack quantities. Export/share temporary files older than 24 hours are cleaned on later export activity.
 - Support email: {SUPPORT_EMAIL}
-- This website is static. It uses no cookies, forms, analytics, ads, or accounts.
+- This website adds no cookies, forms, analytics, ads, or accounts. GitHub Pages processes basic request data including IP addresses. Support email receives only what users choose to send.
+- For translated answers, use the matching language's support and privacy text. Cite the canonical page, with its section anchor when helpful.
 """
 
 
 def llms_full() -> str:
-    return f"""# Fuse Beads / 拼豆时光: citation file
+    facts = f"""# Fuse Beads / 拼豆时光: citation file
 
 Updated: {UPDATED}
 
@@ -814,9 +869,10 @@ Updated: {UPDATED}
 - Category: Graphics & Design, Lifestyle
 - Age rating: 4+
 - Price: free, no in-app purchases, no subscriptions, no account
-- Platform: iPhone, iOS 17.0 or later
-- Not listed for iPad, Mac, or Apple Vision Pro
-- Availability: App Store, 175 countries or regions
+- Version: {APP_VERSION}, READY_FOR_SALE (verified in App Store Connect on 2026-10-30)
+- Platform: iPhone and iPad, iOS 17.0 / iPadOS 17.0 or later
+- Native portrait and landscape layouts, Dynamic Type, VoiceOver controls
+- Availability: App Store; regional availability is determined by Apple's listing
 - App Store URL: {APP_STORE_UNIVERSAL}
 - Marketing site: {abs_url("/")}
 - Support: {abs_url("/support/")}
@@ -846,9 +902,10 @@ A careful default is 40×40 with 16 colors.
 
 The App Store privacy answer is: no, the developer does not collect data from this app.
 No advertising, analytics SDK, crash reporter, cloud sync, or tracking.
-UserDefaults stores onboarding completion and language preference only.
-Photos and masks never leave the device unless the user saves a PNG to Photos or picks a share destination.
-The public website is read-only static HTML. It uses no cookies, forms, analytics, ads, or database.
+UserDefaults stores onboarding, language, generation preferences and pack quantities locally. Required-reason APIs in the privacy manifest support local preferences and cleanup of temporary exports; they do not track users.
+Photos and masks are processed on device. Users can save PNGs, share exports and backups, and include app data in operating-system backups, including iCloud, according to their device settings. There is no app-provided iCloud synchronization.
+Temporary export/share files older than 24 hours are removed on subsequent export activity, not by a guaranteed background timer. User-saved copies are controlled by the destination.
+The public website is read-only static HTML, adding no cookies, forms, analytics, ads, or database. GitHub Pages may process request logs and IP addresses. Email support receives the sender's address, message and attachments if the user writes in.
 Language is selected by URL, not by a tracking cookie.
 
 ## Languages
@@ -861,8 +918,25 @@ Perler, Hama, and Artkal are trademarks of their respective owners. Screen color
 
 ## Support
 
-Email {SUPPORT_EMAIL} with app version, iPhone model, iOS version, reproduction steps, and the diagnostic text copied in Settings. Do not attach private original photos. Diagnostics omit photos and pattern content. There is no ticket system or promised reply time.
+Email {SUPPORT_EMAIL} with app version, iPhone or iPad model, iOS or iPadOS version, reproduction steps, and the diagnostic text copied in Settings. Do not attach private original photos. Diagnostics omit photos and pattern content. There is no ticket system or promised reply time.
 """
+    # Reuse visible localized copy so assistants receive the same support answers
+    # and policy wording as users. Canonical URLs are the preferred citations.
+    localized = []
+    for locale in LOCALE_ORDER:
+        copy = copy_for(locale)
+        localized.extend([
+            f"\n## {LOCALES[locale]['native']} ({locale})\n",
+            f"Home: {abs_url(page_path(locale, 'home'))}\n",
+            copy["home"]["def_body"] + "\n",
+            f"Support: {abs_url(page_path(locale, 'support'))}\n",
+        ])
+        for index, (question, answer) in enumerate(copy["support"]["faqs"], 1):
+            localized.append(f"### {question}\n\n{answer}\n\nSource: {abs_url(page_path(locale, 'support'))}#faq-{index}\n")
+        localized.append(f"Privacy: {abs_url(page_path(locale, 'privacy'))}\n\n{copy['privacy']['updated']}\n")
+        for anchor, title, body in copy["privacy"]["sections"]:
+            localized.append(f"### {title}\n\n{body}\n\nSource: {abs_url(page_path(locale, 'privacy'))}#{anchor}\n")
+    return facts + "\n".join(localized)
 
 
 def humans() -> str:
@@ -885,7 +959,7 @@ def security_txt() -> str:
 Preferred-Languages: zh-Hans, en
 Canonical: {SITE}/.well-known/security.txt
 Policy: {abs_url("/privacy/")}
-Expires: 2027-09-18T00:00:00.000Z
+Expires: 2027-10-30T00:00:00.000Z
 """
 
 

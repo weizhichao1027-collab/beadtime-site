@@ -11,7 +11,8 @@ ORG_ZH = "上海岐山文化传播有限公司"
 ORG_EN = "Shanghai Qishan Cultural Communication Co., Ltd."
 BUNDLE_ID = "com.weizhichao.beadday"
 IOS_MIN = "17.0"
-UPDATED = "2026-09-18"
+APP_VERSION = "1.1.2"
+UPDATED = "2026-10-30"
 COPYRIGHT_YEAR = "2026"
 
 # GitHub Pages serves these paths. Do not rename the zh-Hans public hubs

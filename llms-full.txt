@@ -1,6 +1,6 @@
 # Fuse Beads / 拼豆时光: citation file
 
-Updated: 2026-09-18
+Updated: 2026-10-30
 
 ## Identity
 
@@ -15,9 +15,10 @@ Updated: 2026-09-18
 - Category: Graphics & Design, Lifestyle
 - Age rating: 4+
 - Price: free, no in-app purchases, no subscriptions, no account
-- Platform: iPhone, iOS 17.0 or later
-- Not listed for iPad, Mac, or Apple Vision Pro
-- Availability: App Store, 175 countries or regions
+- Version: 1.1.2, READY_FOR_SALE (verified in App Store Connect on 2026-10-30)
+- Platform: iPhone and iPad, iOS 17.0 / iPadOS 17.0 or later
+- Native portrait and landscape layouts, Dynamic Type, VoiceOver controls
+- Availability: App Store; regional availability is determined by Apple's listing
 - App Store URL: https://apps.apple.com/app/id6799906107
 - Marketing site: https://weizhichao1027-collab.github.io/beadtime-site/
 - Support: https://weizhichao1027-collab.github.io/beadtime-site/support/
@@ -47,9 +48,10 @@ A careful default is 40×40 with 16 colors.
 
 The App Store privacy answer is: no, the developer does not collect data from this app.
 No advertising, analytics SDK, crash reporter, cloud sync, or tracking.
-UserDefaults stores onboarding completion and language preference only.
-Photos and masks never leave the device unless the user saves a PNG to Photos or picks a share destination.
-The public website is read-only static HTML. It uses no cookies, forms, analytics, ads, or database.
+UserDefaults stores onboarding, language, generation preferences and pack quantities locally. Required-reason APIs in the privacy manifest support local preferences and cleanup of temporary exports; they do not track users.
+Photos and masks are processed on device. Users can save PNGs, share exports and backups, and include app data in operating-system backups, including iCloud, according to their device settings. There is no app-provided iCloud synchronization.
+Temporary export/share files older than 24 hours are removed on subsequent export activity, not by a guaranteed background timer. User-saved copies are controlled by the destination.
+The public website is read-only static HTML, adding no cookies, forms, analytics, ads, or database. GitHub Pages may process request logs and IP addresses. Email support receives the sender's address, message and attachments if the user writes in.
 Language is selected by URL, not by a tracking cookie.
 
 ## Languages
@@ -62,4 +64,2200 @@ Perler, Hama, and Artkal are trademarks of their respective owners. Screen color
 
 ## Support
 
-Email 281916057@qq.com with app version, iPhone model, iOS version, reproduction steps, and the diagnostic text copied in Settings. Do not attach private original photos. Diagnostics omit photos and pattern content. There is no ticket system or promised reply time.
+Email 281916057@qq.com with app version, iPhone or iPad model, iOS or iPadOS version, reproduction steps, and the diagnostic text copied in Settings. Do not attach private original photos. Diagnostics omit photos and pattern content. There is no ticket system or promised reply time.
+
+## 简体中文 (zh-Hans)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/
+
+拼豆时光是上海岐山文化传播有限公司开发的 iPhone 和 iPad 应用，英文商店名为 Fuse Beads: Pattern Maker，Apple ID 6799906107，Bundle ID 为 com.weizhichao.beadday。它把相册或相机里的照片转成可对照实物豆板制作的图纸，也提供 24 款原创内置图案。生成、编辑、材料统计、跟拼和备份都在设备本地完成。应用不收集数据，不连接开发者服务器，也没有广告或分析 SDK。
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/support/
+
+### 照片会不会被上传？
+
+不会。你通过系统照片选择器、相机或文件提供的图片，只在设备上生成图纸。智能背景移除使用 Apple Vision 在本机工作，照片和遮罩都不会发送到服务器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-1
+
+### 为什么生成结果和我想的不一样？
+
+结果受原图清晰度、裁切、板尺寸、颜色上限和细节模式影响。默认高质量路径是 40×40、16 色。可先看实时预览，生成后在确认页对比原图，或返回继续调参。保存后也能用原图重新生成。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-2
+
+### 智能背景移除怎么用？
+
+它默认关闭。打开后会在本机保护主体，并用连通背景判断空豆位。若边缘被切掉或背景仍在，关掉后再用手改空豆位，或换一张主体更清楚的照片。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-3
+
+### 色号能直接拿去买豆吗？
+
+色号是屏幕近似参考，不能当成厂商官方精确颜色。显示器和材料批次都会有色差。大量采购前请对照品牌最新实物色卡。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-4
+
+### 导出的 PNG 或 PDF 在哪里？
+
+从工作区或项目菜单导出。PNG 可保存到照片（只申请添加权限，不会读取图库）。PDF 可带行列坐标；58×58 等大图会包含 20×20 分区页。其他分享走系统分享面板。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-5
+
+### 项目找不到了或打不开？
+
+先在项目库检查搜索条件与排序，退出搜索后再查看。不要先卸载 App 或删除数据；如能打开设置，请先导出备份，再附诊断信息联系支持。应用会隔离无效项目，保留可读取的其他项目。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-6
+
+### 备份如何导入？
+
+在「我的 → 设置与隐私」导出 JSON 备份，再在另一台设备上导入。同一项目按更新时间合并，较新版本优先。当前支持 schema 1 格式；不支持的格式会被拒绝。遇到格式错误时，请先更新 App，并保留原始备份和一份已确认可用的旧备份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-7
+
+### 卸载后数据还在吗？
+
+不在。卸载会删除沙盒里的图纸、预览和跟拼进度。换机或删除应用前，请先导出本地备份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-8
+
+### 如何复制诊断信息？
+
+打开我的 → 设置与隐私 → 复制诊断信息。内容包括 App 版本、设备、系统和本地项目数，不含照片或图纸。把它贴进支持邮件即可。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-9
+
+### 支持哪些语言？
+
+英语、简体中文、繁体中文、日语、韩语、西班牙语、法语、德语、巴西葡萄牙语、意大利语、俄语、阿拉伯语（从右到左）和印地语。可跟随系统或在设置中固定。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-10
+
+### 相机权限用来做什么？
+
+仅在你选择拍照生成图纸时使用。照片同样只在本机处理。应用不使用定位、麦克风、通讯录或跟踪权限。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-11
+
+### 没有网络能用吗？
+
+能。核心功能完全离线。打开本支持站或发邮件才需要网络。应用本身不连接开发者服务器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-12
+
+### 应用是免费的吗？
+
+是。拼豆时光在 App Store 免费提供，没有内购、订阅或账号。打开即可制作。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-13
+
+### 支持哪些设备？
+
+支持 iPhone 和 iPad，最低 iOS / iPadOS 17。支持横竖屏、小窗口和大字号。其他设备的兼容性请查看 App Store 的兼容性列表。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-14
+
+### 开发者是谁？
+
+开发者是上海岐山文化传播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。支持邮箱是 281916057@qq.com。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-15
+
+### 相机或保存照片被拒绝怎么办？
+
+在系统设置中找到拼豆时光，按需要允许相机或添加照片，再回到应用重试。照片导入使用系统选择器，只需提供所选照片；也可以用文件导入。不要为排查权限问题卸载应用。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-16
+
+### iPad 上如何调整布局和文字？
+
+可切换横竖屏，或调整多任务窗口大小；界面会随可用宽度适配。在系统设置调整文字大小后，应用支持 Dynamic Type，包括辅助功能字号，并提供 VoiceOver 等效操作。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-17
+
+### 备份失败或提示文件过大怎么办？
+
+先检查设备剩余空间和保存目标是否可写，保留旧备份并重试。当前单份备份上限为 40 MiB，导入合并后的项目总数上限为 200。备份过大时，先导出重要项目的 PNG/PDF，联系支持排查；不要先卸载或删除原项目。PNG/PDF 不能替代可继续编辑的 JSON 备份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/support/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/privacy/
+
+最近更新日期：2026年10月30日。本次补充 iPhone / iPad、生成偏好、临时导出文件、系统备份及网站托管与邮件支持的说明。
+
+### 我们收集什么
+
+开发者不从 App 收集照片、图纸、材料清单、进度或使用记录。没有账号、广告、分析 SDK、远程崩溃上报或跨应用追踪，也没有 App 自带的云同步。隐私清单的收集数据类型为空。UserDefaults 在本机保存首次引导、语言偏好、上次生成的板尺寸、颜色上限、品牌、细节模式及材料包装数量偏好；这些设置不会发送到开发者服务器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#collect
+
+### 照片与相机
+
+你主动选择的相册图片、文件，或用系统相机拍摄的图片，只在设备上用于生成拼豆图纸。若开启智能移除背景，Apple Vision 在本机识别并保护主体；照片和遮罩不会发送给 Apple、开发者或任何服务器。应用会在容器内保存一份独立压缩预览，便于继续编辑和放入备份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#photos
+
+### 本地存储与保留
+
+项目、豆位、材料备齐状态、跟拼进度与压缩预览保存在 App 容器内，直到你删除项目、删除全部项目或卸载应用。无效数据会在本机隔离。你可以主动导出 JSON 备份、PNG 或 PDF。导出与备份产生的临时分享文件，会在后续同类导出时尝试清理超过 24 小时的副本；仅为此读取 App 临时目录内文件的修改时间。你另行保存到文件或分享目标的副本不受该清理影响。系统备份（包括 iCloud 备份）可能按你的系统设置包含 App 数据；这不属于 App 自带的云同步，开发者无法访问这些系统备份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#storage
+
+### 保存到照片与分享
+
+点击「保存 PNG 到照片」时，应用申请仅添加照片权限，用于写入你选择的导出图，不会借此读取图库。其他主动导出由系统分享面板及你选择的目标处理；目标服务可能按其自身政策处理文件。系统备份还可能按你的设置保留 App 数据。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#share
+
+### 你的控制
+
+你可以仅提供所选照片、删除项目或全部本地项目，并主动导出备份。网站是只读静态页，不要求登录，不设置表单、分析、广告或追踪 cookie。只有你主动发邮件时，支持邮箱才会收到你提供的邮件地址、正文及附件，用于处理你的问题；这不是 App 的自动收集。请避免发送私人照片。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#controls
+
+### 儿童与敏感信息
+
+应用不建设儿童账户，也不要求姓名、联系方式或其他敏感信息。建议年龄分级为 4+，并可用于亲子创作，但请不要导入你不希望保留在本地项目中的照片。我们不面向收集儿童个人信息。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#children
+
+### 第三方与服务端
+
+App 没有第三方运行时 SDK，不连接开发者业务服务器。背景移除使用 Apple Vision 在设备上完成。公开网站托管于 GitHub Pages；提供页面服务时，托管方可能处理 IP 地址和基本请求日志等访问数据，具体依其隐私说明。网站自身不添加分析或广告脚本。邮件由相关邮箱服务商处理。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#third
+
+### 政策更新与联系
+
+若隐私实践发生实质变化，我们会更新本政策和日期。开发者：上海岐山文化传播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。隐私问题请发送至 281916057@qq.com。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/privacy/#contact
+
+
+## English (en)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/en/home/
+
+Fuse Beads: Pattern Maker is an iPhone and iPad app from Shanghai Qishan Cultural Communication Co., Ltd. The Chinese name is 拼豆时光. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. It turns a photo from Photos, the camera, or Files into a pattern you can place on a physical pegboard, and it includes 24 original presets. Generation, editing, material counts, guided making, and backups stay on the device. The app does not collect data, does not contact a developer server, and includes no ads or analytics SDK.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/en/
+
+### Are my photos uploaded?
+
+No. Photos you pick with the system picker, camera, or Files are processed only on the device. Smart background removal uses Apple Vision on the device. Photos and masks are not sent to a server.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-1
+
+### Why does the pattern look off?
+
+Results depend on source sharpness, crop, board size, color limit, and detail mode. The usual quality path is 40×40 with 16 colors. Use the live preview, confirm against the original, or go back and retune. You can also regenerate from the original after saving.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-2
+
+### How does smart background removal work?
+
+It is off by default. When enabled, it protects the subject on the device and treats connected background as empty cells. If edges vanish or background remains, turn it off and edit empty cells by hand, or use a clearer subject photo.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-3
+
+### Can I buy beads from the on-screen codes?
+
+Treat codes as approximate screen references, not official factory matches. Displays and material batches vary. Compare the brand's current physical chart before a large purchase.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-4
+
+### Where do PNG and PDF exports go?
+
+Export from the workspace or project menu. PNG can be saved to Photos with add-only access; the app does not read your library with that permission. PDFs include coordinates. Large boards such as 58×58 add 20×20 section pages. Other sharing uses the system share sheet.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-5
+
+### A project is missing or will not open.
+
+Check library search filters and sorting first, then clear the search. Keep the app installed and preserve its data. If Settings still opens, export a backup before contacting support with diagnostics. Invalid projects are isolated locally so readable projects can remain available.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-6
+
+### How do backups merge?
+
+Export a JSON backup from Me → Settings and Privacy, then import it on the other device. Projects merge by ID, keeping the most recently updated copy. The current backup schema is 1. Unsupported schemas are rejected. If a format error appears, update the app and keep both the original file and a known working backup.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-7
+
+### Does uninstalling keep my patterns?
+
+No. Uninstalling deletes sandbox patterns, previews, and progress. Export a local backup before you remove the app or change phones.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-8
+
+### How do I copy diagnostics?
+
+Go to Me → Settings and Privacy → Copy Diagnostic Information. It includes app version, device, system, and local project count. It does not include photos or patterns. Paste it into your support email.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-9
+
+### Which languages are included?
+
+English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Brazilian Portuguese, Italian, Russian, Arabic (right to left), and Hindi. Follow the system or lock a language in Settings.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-10
+
+### Why does the app ask for the camera?
+
+Only when you choose to take a photo for a pattern. That photo is also processed on the device. The app does not use location, microphone, contacts, or tracking.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-11
+
+### Does it work without a network?
+
+Yes. Core making is fully offline. You only need a network to open this site or send email. The app does not contact a developer server.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-12
+
+### Is the app free?
+
+Yes. Fuse Beads is free on the App Store. There are no in-app purchases, subscriptions, or accounts. Open it and start a board.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-13
+
+### Which devices are supported?
+
+iPhone and iPad with iOS / iPadOS 17 or later. Layouts support portrait, landscape, smaller windows, and larger text. Check the App Store compatibility list for other devices.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-14
+
+### Who makes Fuse Beads?
+
+Shanghai Qishan Cultural Communication Co., Ltd. The Chinese name of the company is 上海岐山文化传播有限公司. Support email: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-15
+
+### What if camera or photo saving access is denied?
+
+Find Fuse Beads in system Settings, allow Camera or add-only Photos access as needed, then retry. Photo import uses the system picker for only the photos you select; Files is another option. Keep the app installed while resolving permissions.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-16
+
+### How do iPad layouts and text size work?
+
+Rotate the device or resize its multitasking window; the layout adapts to available width. Change text size in system Settings. The app supports Dynamic Type, including accessibility sizes, and equivalent VoiceOver controls.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-17
+
+### What if a backup fails or is too large?
+
+Check available device storage and whether the destination is writable, keep your previous backup, and retry. A backup is limited to 40 MiB, with at most 200 projects after merging. If it is too large, export PNG/PDF copies of important projects and contact support before deleting projects or uninstalling. PNG/PDF files do not replace an editable JSON backup.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/
+
+Last updated: 30 October 2026. Clarifies iPhone / iPad support, saved generation preferences, temporary exports, system backups, website hosting, and email support.
+
+### What we collect
+
+The developer does not collect photos, patterns, material lists, progress, or usage records from the app. There are no accounts, ads, analytics SDKs, remote crash reports, cross-app tracking, or app-provided cloud sync. The privacy manifest lists no collected data types. UserDefaults keeps onboarding, language, the last board dimensions, color limit, brand, detail mode, and material pack-size preferences locally. These settings are not sent to a developer server.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#collect
+
+### Photos and camera
+
+Photos you pick from the library or Files, or capture with the system camera, are used only on the device to build bead patterns. If Smart Background Removal is on, Apple Vision finds and protects the subject on the device. Photos and masks are not sent to Apple, the developer, or any server. The app keeps a separate compressed preview in its container for editing and backups.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#photos
+
+### Local storage and retention
+
+Projects, bead cells, material checkmarks, guided progress, and compressed previews are stored in the app container until you delete projects, delete all projects, or uninstall. Invalid data is isolated locally. You can export JSON backups, PNG, or PDF. On a later export of the same kind, the app attempts to remove temporary share copies older than 24 hours, reading modification times only within its temporary folders. Copies you save elsewhere are unaffected. System backups, including iCloud backups, may include app data according to your settings. This is separate from app-provided cloud sync; the developer cannot access your system backups.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#storage
+
+### Saving to Photos and sharing
+
+Save PNG to Photos requests add-only permission to write the export you choose; that permission is not used to read your library. Other exports use the system share sheet and your chosen destination, whose service may handle the file under its own policy. System backups may also retain app data according to your settings.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#share
+
+### Your controls
+
+You can select only the photos you want to provide, delete projects or all local projects, and export backups. This read-only website requires no account and adds no forms, analytics, ads, or tracking cookies. If you choose to email support, the inbox receives your email address, message, and any attachments to handle your request. This is not automatic app collection. Avoid sending private photos.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#controls
+
+### Children and sensitive information
+
+The app does not create child accounts and does not ask for names, contact details, or other sensitive information. The suggested age rating is 4+, and families may use it together. Do not import a photo whose contents you do not want stored in a local project. The app is not designed to collect children's personal information.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#children
+
+### Third parties and servers
+
+The app has no third-party runtime SDK and does not contact a developer backend. Background removal uses Apple Vision on the device. GitHub Pages hosts this website; its provider may process IP addresses and basic request logs to serve pages, under its own privacy statement. The website adds no analytics or ad scripts. Relevant email providers process support messages.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#third
+
+### Updates and contact
+
+If privacy practices change in a material way, we will update this policy and its date. Developer: Shanghai Qishan Cultural Communication Co., Ltd. For privacy questions, email 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/en/privacy/#contact
+
+
+## 繁體中文 (zh-Hant)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/home/
+
+拼豆時光是上海岐山文化傳播有限公司開發的 iPhone 和 iPad App，英文商店名為 Fuse Beads: Pattern Maker，Apple ID 6799906107，Bundle ID 為 com.weizhichao.beadday。它把相簿或相機裡的照片轉成可對照實物豆板製作的圖紙，也提供 24 款原創內建圖案。產生、編輯、材料統計、跟拼和備份都在裝置本地完成。App 不收集資料，不連接開發者伺服器，也沒有廣告或分析 SDK。
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/
+
+### 照片會不會被上傳？
+
+不會。你透過系統照片選擇器、相機或檔案提供的圖片，只在裝置上產生圖紙。智慧背景移除使用 Apple Vision 在本機工作，照片和遮罩都不會傳送到伺服器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-1
+
+### 為什麼產生結果和我想的不一樣？
+
+結果受原圖清晰度、裁切、板尺寸、顏色上限和細節模式影響。預設高品質路徑是 40×40、16 色。可先看即時預覽，產生後在確認頁對比原圖，或返回繼續調參。儲存後也能用原圖重新產生。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-2
+
+### 智慧背景移除怎麼用？
+
+它預設關閉。打開後會在本機保護主體，並用連通背景判斷空豆位。若邊緣被切掉或背景仍在，關掉後再用手改空豆位，或換一張主體更清楚的照片。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-3
+
+### 色號能直接拿去買豆嗎？
+
+色號是螢幕近似參考，不能當成廠商官方精確顏色。顯示器和材料批次都會有色差。大量採購前請對照品牌最新實物色卡。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-4
+
+### 匯出的 PNG 或 PDF 在哪裡？
+
+從工作區或項目選單匯出。PNG 可儲存到照片（只申請加入權限，不會讀取圖庫）。PDF 可帶行列座標；58×58 等大圖會包含 20×20 分區頁。其他分享走系統分享面板。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-5
+
+### 項目找不到了或打不開？
+
+先檢查項目庫的搜尋條件與排序，清除搜尋後再查看。請保留 App 與原有資料；若可開啟設定，先匯出備份，再附診斷資訊聯絡支援。無效項目會在本機隔離，保留可讀取的其他項目。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-6
+
+### 備份如何匯入？
+
+在「我的 → 設定與隱私」匯出 JSON 備份，再於另一台裝置匯入。同一項目依更新時間合併，較新副本優先。目前支援 schema 1 格式；不支援的格式會被拒絕。遇到格式錯誤時，請先更新 App，並保留原始檔案和已確認可用的備份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-7
+
+### 卸載後資料還在嗎？
+
+不在。卸載會刪除沙盒裡的圖紙、預覽和跟拼進度。換機或刪除 App 前，請先匯出本地備份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-8
+
+### 如何複製診斷資訊？
+
+打開我的 → 設定與隱私 → 複製診斷資訊。內容包括 App 版本、裝置、系統和本地項目數，不含照片或圖紙。把它貼進支援郵件即可。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-9
+
+### 支援哪些語言？
+
+英語、簡體中文、繁體中文、日語、韓語、西班牙語、法語、德語、巴西葡萄牙語、義大利語、俄語、阿拉伯語（從右到左）和印地語。可跟隨系統或在設定中固定。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-10
+
+### 相機權限用來做什麼？
+
+僅在你選擇拍照產生圖紙時使用。照片同樣只在本機處理。App 不使用定位、麥克風、通訊錄或追蹤權限。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-11
+
+### 沒有網路能用嗎？
+
+能。核心功能完全離線。打開本支援站或寄信才需要網路。App 本身不連接開發者伺服器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-12
+
+### App 是免費的嗎？
+
+是。拼豆時光在 App Store 免費提供，沒有內購、訂閱或帳號。打開即可製作。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-13
+
+### 支援哪些裝置？
+
+支援 iPhone 和 iPad，最低 iOS / iPadOS 17。支援直向、橫向、小視窗與大字體；其他裝置請查看 App Store 的相容性列表。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-14
+
+### 開發者是誰？
+
+開發者是上海岐山文化傳播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。支援信箱是 281916057@qq.com。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-15
+
+### 相機或儲存照片被拒絕怎麼辦？
+
+在系統設定找到拼豆時光，依需要允許相機或新增照片，再回到 App 重試。匯入照片使用系統選擇器，只需提供所選照片；也可從檔案匯入。排查時請保留 App。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-16
+
+### 如何調整 iPad 版面與文字？
+
+切換直向、橫向或調整多工視窗，版面會隨可用寬度適配。在系統設定調整文字大小；支援 Dynamic Type 輔助使用字級與 VoiceOver 等效操作。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-17
+
+### 備份失敗或檔案過大怎麼辦？
+
+先檢查裝置剩餘空間與儲存位置是否可寫入，保留舊備份後重試。單份備份上限為 40 MiB，匯入合併後最多 200 個項目。過大時可先匯出重要項目的 PNG/PDF，聯絡支援後再處理原資料；不要先移除 App。PNG/PDF 不能取代可繼續編輯的 JSON 備份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/
+
+最近更新日期：2026年10月30日。本次補充 iPhone / iPad、產生偏好、暫存匯出、系統備份、網站託管與郵件支援說明。
+
+### 我們收集什麼
+
+開發者不從 App 收集照片、圖紙、材料清單、進度或使用紀錄。沒有帳號、廣告、分析 SDK、遠端當機回報、跨 App 追蹤或 App 自帶的雲端同步。隱私清單的收集資料類型為空。UserDefaults 在本機保存首次引導、語言偏好、上次產生的板尺寸、色數上限、品牌、細節模式與材料包裝數量偏好，不會傳送至開發者伺服器。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#collect
+
+### 照片與相機
+
+你主動選擇的相簿圖片、檔案，或用系統相機拍攝的圖片，只在裝置上用於產生拼豆圖紙。若開啟智慧移除背景，Apple Vision 在本機辨識並保護主體；照片和遮罩不會傳送給 Apple、開發者或任何伺服器。App 會在容器內儲存一份獨立壓縮預覽，便於繼續編輯和放入備份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#photos
+
+### 本地儲存與保留
+
+項目、豆位、材料備齊狀態、跟拼進度與壓縮預覽保存在 App 容器，直到你刪除項目、刪除所有項目或移除 App。無效資料在本機隔離。你可匯出 JSON 備份、PNG 或 PDF。後續同類匯出時，App 會嘗試清理超過 24 小時的暫存分享副本，僅為此讀取 App 暫存目錄內的檔案修改時間。另存至其他位置的副本不受影響。系統備份（包括 iCloud 備份）可能依你的設定包含 App 資料；這與 App 雲端同步不同，開發者無法存取你的系統備份。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#storage
+
+### 儲存到照片與分享
+
+點選「儲存 PNG 到照片」時只申請新增照片權限，寫入所選匯出圖，不用於讀取相簿。其他主動匯出由系統分享面板與所選目標處理，目標服務可能依其政策處理檔案。系統備份也可能依你的設定保留 App 資料。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#share
+
+### 你的控制
+
+你可只提供所選照片、刪除項目或所有本機項目，以及主動匯出備份。網站是唯讀靜態頁，不要求登入，也不設表單、分析、廣告或追蹤 Cookie。只有你主動寄信，支援信箱才會收到你提供的信箱地址、內文與附件以處理問題；這不是 App 自動收集。請避免寄送私人照片。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#controls
+
+### 兒童與敏感資訊
+
+App 不建設兒童帳戶，也不要求姓名、聯絡方式或其他敏感資訊。建議年齡分級為 4+，並可用於親子創作，但請不要匯入你不希望保留在本地項目中的照片。我們不面向收集兒童個人資訊。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#children
+
+### 第三方與伺服器
+
+App 沒有第三方執行期 SDK，不連接開發者業務伺服器。背景移除使用 Apple Vision 在本機完成。網站託管於 GitHub Pages；託管方提供網頁時可能處理 IP 位址與基本請求紀錄，依其隱私說明辦理。網站自身不加入分析或廣告腳本。郵件由相關信箱服務商處理。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#third
+
+### 政策更新與聯絡
+
+若隱私實務發生實質變化，我們會更新本政策和日期。開發者：上海岐山文化傳播有限公司（Shanghai Qishan Cultural Communication Co., Ltd.）。隱私問題請傳送至 281916057@qq.com。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/zh-Hant/privacy/#contact
+
+
+## 日本語 (ja)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/ja/home/
+
+ビーズタイムは Shanghai Qishan Cultural Communication Co., Ltd.（上海岐山文化伝播有限公司）のiPhone・iPadアプリです。英語ストア名は Fuse Beads: Pattern Maker。Apple ID 6799906107。Bundle ID は com.weizhichao.beadday。写真アプリ・カメラ・ファイルの画像を、実物のプレートで作れる図案にします。オリジナル内蔵図案は24点。生成、編集、材料、作り進め、バックアップはすべて端末内です。データは収集せず、開発者サーバーにも接続せず、広告や解析SDKもありません。
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/ja/
+
+### 写真はアップロードされますか？
+
+されません。システムの写真選択、カメラ、ファイルで選んだ画像は端末内だけで図案になります。スマート背景除去もApple Visionを端末内で使います。写真もマスクもサーバーへ送りません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-1
+
+### 図案がイメージと違います。
+
+元画像の鮮明さ、トリミング、プレートサイズ、色数、細部モードで結果が変わります。よく使う経路は40×40、16色です。ライブプレビューを見て、確認画面で元写真と比べるか、戻って調整してください。保存後も元画像から再生成できます。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-2
+
+### スマート背景除去の使い方は？
+
+初期状態はオフです。オンにすると端末内で被写体を守り、つながった背景を空マスにします。輪郭が欠けたり背景が残ったりしたらオフにして手で直し、または被写体がはっきりした写真に替えてください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-3
+
+### 画面の色番号で買ってよいですか？
+
+画面参考であり、工場の公式色ではありません。ディスプレイと材料ロットで差が出ます。まとめて買う前に最新の実物色見本を見てください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-4
+
+### PNGやPDFはどこに行きますか？
+
+ワークスペースまたはプロジェクトメニューから書き出します。PNGは追加専用の写真権限で保存でき、その権限でライブラリは読みません。PDFには座標が付き、58×58など大きな図は20×20分割ページを含みます。ほかの共有はシステムの共有シートです。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-5
+
+### プロジェクトが見つからない、開けない。
+
+まずライブラリの検索条件と並び順を確認し、検索を解除してください。アプリや元データは削除せず、設定を開ける場合は先にバックアップを書き出し、診断情報とともにサポートへご連絡ください。無効なプロジェクトは端末上で隔離され、他の読めるプロジェクトを保護します。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-6
+
+### バックアップの取り込み方は？
+
+自分 → 設定とプライバシーからJSONバックアップを書き出し、別のデバイスで読み込みます。同じプロジェクトは更新日時の新しいものを優先して統合します。現在の形式はschema 1です。未対応の形式は読み込めません。形式エラーが出た場合はアプリを更新し、元ファイルと使用できる旧バックアップを残してください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-7
+
+### 削除しても図案は残りますか？
+
+残りません。削除するとサンドボックスの図案、プレビュー、進捗が消えます。機種変更や削除の前にローカルバックアップを書き出してください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-8
+
+### 診断情報のコピー方法は？
+
+マイ → 設定とプライバシー → 診断情報をコピー。アプリ版、端末、システム、ローカルプロジェクト数が入ります。写真や図案は入りません。サポートメールに貼ってください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-9
+
+### 対応言語は？
+
+英語、簡体字中国語、繁体字中国語、日本語、韓国語、スペイン語、フランス語、ドイツ語、ブラジルポルトガル語、イタリア語、ロシア語、アラビア語（右から左）、ヒンディー語。システムに従うか、設定で固定できます。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-10
+
+### カメラ許可は何のため？
+
+図案用に撮影を選んだときだけ使います。その写真も端末内処理です。位置情報、マイク、連絡先、トラッキングは使いません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-11
+
+### オフラインで使えますか？
+
+使えます。作る作業は完全オフラインです。このサイトを開くときとメール送信のときだけ通信が必要です。アプリは開発者サーバーに接続しません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-12
+
+### 無料ですか？
+
+無料です。App Storeで無料提供し、アプリ内課金、サブスクリプション、アカウントはありません。開けば作れます。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-13
+
+### 対応するデバイスは？
+
+iOS / iPadOS 17以降のiPhone・iPadに対応します。縦向き・横向き、小さいウインドウ、大きな文字に対応します。その他の機種はApp Storeの互換性欄をご確認ください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-14
+
+### 開発者は誰ですか？
+
+Shanghai Qishan Cultural Communication Co., Ltd.（上海岐山文化伝播有限公司）です。サポートメールは 281916057@qq.com です。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-15
+
+### カメラや写真への保存が拒否されたら？
+
+システム設定でFuse Beadsを開き、必要に応じてカメラや写真の追加を許可して再試行してください。写真の読み込みはシステムの選択画面で選んだ写真だけを使用し、ファイルからも読み込めます。権限の確認中にアプリを削除しないでください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-16
+
+### iPadのレイアウトや文字を調整するには？
+
+端末の向きやマルチタスクのウインドウサイズを変えると、幅に合わせて表示が変わります。文字サイズはシステム設定で調整できます。アクセシビリティサイズを含むDynamic TypeとVoiceOverの同等操作に対応しています。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-17
+
+### バックアップの失敗や容量超過は？
+
+端末の空き容量と保存先への書き込みを確認し、旧バックアップを残して再試行してください。1つのバックアップは40 MiBまで、統合後は200プロジェクトまでです。大きすぎる場合は重要な図案のPNG/PDFを保存し、プロジェクトやアプリを削除する前にサポートへご連絡ください。PNG/PDFは再編集用のJSONバックアップの代わりにはなりません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/
+
+最終更新：2026年10月30日。iPhone・iPad、生成設定、一時書き出し、システムバックアップ、サイトのホスティングとメールサポートについて補足しました。
+
+### 収集するもの
+
+開発者はアプリから写真、図案、材料リスト、進捗、利用記録を収集しません。アカウント、広告、分析SDK、遠隔クラッシュ報告、アプリ間追跡、アプリ独自のクラウド同期はありません。プライバシーマニフェストの収集データ型は空です。UserDefaultsには初回案内、言語、前回のボード寸法、色数、ブランド、細部モード、材料の袋あたり個数の設定を端末内に保存し、開発者のサーバーには送信しません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#collect
+
+### 写真とカメラ
+
+写真ライブラリやファイルから選んだ画像、またはシステムカメラで撮った画像は、端末内で図案を作るためだけに使います。スマート背景除去がオンのとき、Apple Visionが端末内で被写体を守ります。写真もマスクもApple、開発者、サーバーへ送りません。編集とバックアップのため、圧縮プレビューを容器内に別に保存します。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#photos
+
+### 端末内保存と保持
+
+プロジェクト、配置、材料の準備状態、進捗、圧縮プレビューは、プロジェクトや全項目、またはアプリを削除するまでアプリ内に保存されます。無効データは端末内で隔離します。JSON、PNG、PDFを書き出せます。同種の書き出しを次に行う際、24時間を超えた一時共有ファイルの削除を試み、そのためにアプリの一時フォルダ内の更新日時だけを読み取ります。別の場所に保存したコピーには影響しません。システム設定により、iCloudを含むシステムバックアップにアプリのデータが含まれる場合があります。これはアプリ独自の同期とは異なり、開発者はシステムバックアップにアクセスできません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#storage
+
+### 写真への保存と共有
+
+PNGを写真に保存する際は追加専用の権限を求め、選んだ画像を書き込みます。この権限でライブラリを読み取りません。他の書き出しはシステムの共有画面と選択した送信先が処理し、送信先の方針が適用される場合があります。システムバックアップも設定に応じてアプリのデータを保持する場合があります。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#share
+
+### あなたの操作
+
+必要な写真だけを選び、プロジェクトや全ローカルプロジェクトを削除し、バックアップを書き出せます。この読み取り専用サイトにはログイン、フォーム、分析、広告、追跡Cookieを設けていません。サポートへ自分でメールを送った場合、メールアドレス、本文、添付内容をお問い合わせの対応に使用します。アプリによる自動収集ではありません。私的な写真は送らないでください。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#controls
+
+### 子どもと機微情報
+
+子ども用アカウントは作らず、氏名、連絡先、その他の機微情報も求めません。想定年齢は4+で、家族での利用は可能です。ローカルプロジェクトに残したくない写真は取り込まないでください。子どもの個人情報を集める設計ではありません。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#children
+
+### 第三者とサーバー
+
+アプリにサードパーティ製実行SDKはなく、開発者のバックエンドに接続しません。背景除去には端末内のApple Visionを使います。サイトはGitHub Pagesにホストされ、提供者がページ配信のためにIPアドレスや基本的なリクエストログを、そのプライバシー説明に従い処理する場合があります。サイト独自の分析・広告スクリプトはありません。メールは関連するメール事業者が処理します。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#third
+
+### 更新と連絡
+
+プライバシーの実務が実質的に変わる場合、この方針と日付を更新します。開発者：Shanghai Qishan Cultural Communication Co., Ltd. 質問は 281916057@qq.com へ。
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ja/privacy/#contact
+
+
+## 한국어 (ko)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/ko/home/
+
+비드 타임은 Shanghai Qishan Cultural Communication Co., Ltd.(상하이 치산 문화전파 유한공사)의 iPhone 및 iPad 앱입니다. 영어 스토어 이름은 Fuse Beads: Pattern Maker입니다. Apple ID 6799906107. Bundle ID는 com.weizhichao.beadday입니다. 사진, 카메라, 파일의 이미지를 실제 보드에서 만들 수 있는 도안으로 바꾸고, 원본 내장 도안 24개를 제공합니다. 생성, 편집, 재료, 따라 만들기, 백업은 모두 기기 안에서 이루어집니다. 데이터를 수집하지 않고, 개발자 서버에 연결하지 않으며, 광고나 분석 SDK가 없습니다.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/ko/
+
+### 사진이 업로드되나요?
+
+아니요. 시스템 선택기, 카메라, 파일로 고른 이미지는 기기에서만 도안이 됩니다. 스마트 배경 제거는 Apple Vision을 기기에서 씁니다. 사진과 마스크는 서버로 가지 않습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-1
+
+### 도안이 생각한 것과 다릅니다.
+
+원본 선명도, 자르기, 보드 크기, 색 수, 디테일 모드에 따라 달라집니다. 보통의 품질 경로는 40×40, 16색입니다. 실시간 미리보기를 보고 확인 화면에서 원본과 비교하거나 돌아가 다시 맞추세요. 저장 후에도 원본으로 다시 만들 수 있습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-2
+
+### 스마트 배경 제거는 어떻게 쓰나요?
+
+기본은 꺼짐입니다. 켜면 기기에서 주제를 보호하고 이어진 배경을 빈 칸으로 봅니다. 가장자리가 잘리거나 배경이 남으면 끄고 손으로 고치거나, 주제가 더 분명한 사진으로 바꾸세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-3
+
+### 화면 색 번호로 사도 되나요?
+
+화면 근사 참고이며 공장 공식 색이 아닙니다. 화면과 재료 로트에 따라 다릅니다. 대량 구매 전에 최신 실물 색 카드를 보세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-4
+
+### PNG와 PDF는 어디로 가나요?
+
+작업 공간 또는 프로젝트 메뉴에서 보냅니다. PNG는 추가 전용 권한으로 사진에 저장할 수 있고, 그 권한으로 보관함을 읽지 않습니다. PDF에는 좌표가 있고 58×58 같은 큰 보드는 20×20 구역 페이지를 가집니다. 다른 공유는 시스템 공유 시트입니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-5
+
+### 프로젝트를 못 찾거나 열 수 없습니다.
+
+먼저 프로젝트 목록의 검색 조건과 정렬을 확인하고 검색을 지우세요. 앱이나 원본 데이터를 삭제하지 마세요. 설정을 열 수 있으면 백업을 먼저 내보내고 진단 정보와 함께 지원팀에 문의하세요. 유효하지 않은 프로젝트는 기기에서 격리해 나머지 읽을 수 있는 프로젝트를 보호합니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-6
+
+### 백업은 어떻게 합치나요?
+
+나 → 설정과 개인정보에서 JSON 백업을 내보낸 뒤 다른 기기에서 가져옵니다. 같은 프로젝트는 수정 시간이 더 최근인 사본을 우선하여 병합합니다. 현재 형식은 schema 1이며 지원하지 않는 형식은 거부됩니다. 형식 오류가 나면 앱을 업데이트하고 원본 파일과 사용 가능한 이전 백업을 보관하세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-7
+
+### 삭제해도 도안이 남나요?
+
+남지 않습니다. 삭제하면 샌드박스의 도안, 미리보기, 진행이 사라집니다. 앱을 지우거나 기기를 바꾸기 전에 로컬 백업을 보내세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-8
+
+### 진단 정보는 어떻게 복사하나요?
+
+나 → 설정 및 개인정보 → 진단 정보 복사. 앱 버전, 기기, 시스템, 로컬 프로젝트 수가 들어갑니다. 사진과 도안은 없습니다. 지원 메일에 붙여 넣으세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-9
+
+### 어떤 언어를 쓰나요?
+
+영어, 중국어 간체, 중국어 번체, 일본어, 한국어, 스페인어, 프랑스어, 독일어, 브라질 포르투갈어, 이탈리아어, 러시아어, 아랍어(오른쪽에서 왼쪽), 힌디어. 시스템을 따르거나 설정에서 고정합니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-10
+
+### 카메라 권한은 왜 필요하나요?
+
+도안용으로 사진을 찍을 때만 씁니다. 그 사진도 기기에서 처리합니다. 위치, 마이크, 연락처, 추적은 쓰지 않습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-11
+
+### 네트워크 없이 쓸 수 있나요?
+
+있습니다. 만드는 기능은 완전 오프라인입니다. 이 사이트를 열거나 메일을 보낼 때만 네트워크가 필요합니다. 앱은 개발자 서버에 연결하지 않습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-12
+
+### 앱이 무료인가요?
+
+그렇습니다. App Store에서 무료이며 인앱 결제, 구독, 계정이 없습니다. 열면 만들 수 있습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-13
+
+### 어떤 기기를 지원하나요?
+
+iOS / iPadOS 17 이상의 iPhone 및 iPad를 지원합니다. 세로·가로 화면, 작은 창과 큰 글씨에 대응합니다. 다른 기기는 App Store 호환성 목록을 확인하세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-14
+
+### 누가 만드나요?
+
+Shanghai Qishan Cultural Communication Co., Ltd.(상하이 치산 문화전파 유한공사)입니다. 지원 이메일은 281916057@qq.com입니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-15
+
+### 카메라나 사진 저장 권한이 거부되었나요?
+
+시스템 설정에서 Fuse Beads를 찾아 필요한 카메라 또는 사진 추가 권한을 허용한 뒤 다시 시도하세요. 사진 가져오기는 시스템 선택기에서 고른 사진만 사용하며 파일로 가져올 수도 있습니다. 권한을 확인하는 동안 앱을 삭제하지 마세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-16
+
+### iPad 화면과 글자 크기는 어떻게 조절하나요?
+
+기기를 회전하거나 멀티태스킹 창 크기를 바꾸면 사용 가능한 너비에 맞게 표시됩니다. 시스템 설정에서 글자 크기를 조절하세요. 손쉬운 사용 크기를 포함한 Dynamic Type과 VoiceOver 동등 조작을 지원합니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-17
+
+### 백업이 실패하거나 너무 큰 경우에는?
+
+기기의 남은 공간과 저장 위치의 쓰기 가능 여부를 확인하고 기존 백업을 보관한 채 다시 시도하세요. 백업 한 개는 40 MiB까지, 병합 후 프로젝트는 최대 200개입니다. 너무 크면 중요한 프로젝트를 PNG/PDF로 내보내고 원본이나 앱을 삭제하기 전에 지원팀에 문의하세요. PNG/PDF는 계속 편집할 수 있는 JSON 백업을 대신하지 않습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/
+
+최근 업데이트: 2026년 10월 30일. iPhone·iPad, 생성 설정, 임시 내보내기, 시스템 백업, 웹 호스팅과 이메일 지원 설명을 보완했습니다.
+
+### 무엇을 수집하는가
+
+개발자는 앱에서 사진, 도안, 재료 목록, 진행 상태 또는 사용 기록을 수집하지 않습니다. 계정, 광고, 분석 SDK, 원격 충돌 보고, 앱 간 추적이나 앱 자체 클라우드 동기화가 없습니다. 개인정보 명세의 수집 데이터 유형은 비어 있습니다. UserDefaults는 시작 안내, 언어, 마지막 보드 크기, 색상 수, 브랜드, 세부 모드와 포장 수량 설정을 기기에 저장하며 개발자 서버로 보내지 않습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#collect
+
+### 사진과 카메라
+
+보관함이나 파일에서 고른 이미지, 또는 시스템 카메라로 찍은 이미지는 기기에서 도안을 만들 때만 씁니다. 스마트 배경 제거가 켜져 있으면 Apple Vision이 기기에서 주제를 찾고 보호합니다. 사진과 마스크는 Apple, 개발자, 어떤 서버에도 가지 않습니다. 편집과 백업을 위해 압축 미리보기를 컨테이너에 따로 둡니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#photos
+
+### 로컬 저장과 보관
+
+프로젝트, 구슬 위치, 재료 준비 상태, 진행 상황과 압축 미리보기는 프로젝트·전체 프로젝트·앱을 삭제할 때까지 앱 컨테이너에 보관됩니다. 잘못된 데이터는 기기에서 격리됩니다. JSON 백업, PNG 또는 PDF를 내보낼 수 있습니다. 같은 종류의 내보내기를 나중에 실행할 때 24시간이 지난 임시 공유 사본을 정리하며, 이를 위해 앱 임시 폴더 안 파일의 수정 시간만 읽습니다. 다른 위치에 저장한 사본은 영향을 받지 않습니다. 설정에 따라 iCloud를 포함한 시스템 백업에 앱 데이터가 포함될 수 있습니다. 이는 앱 자체 동기화와 다르며 개발자는 시스템 백업에 접근할 수 없습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#storage
+
+### 사진 저장과 공유
+
+PNG를 사진에 저장할 때 추가 전용 권한으로 선택한 이미지를 씁니다. 이 권한으로 보관함을 읽지 않습니다. 다른 내보내기는 시스템 공유 시트와 선택한 대상에서 처리하며 대상 서비스의 정책이 적용될 수 있습니다. 시스템 백업도 설정에 따라 앱 데이터를 보관할 수 있습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#share
+
+### 당신의 통제
+
+선택한 사진만 제공하고 프로젝트나 전체 로컬 프로젝트를 지우며 백업을 내보낼 수 있습니다. 읽기 전용 웹사이트에는 로그인, 양식, 분석, 광고나 추적 쿠키가 없습니다. 직접 지원 메일을 보내면 이메일 주소, 본문과 첨부파일을 문의 처리에 사용합니다. 이는 앱의 자동 수집이 아닙니다. 개인 사진은 보내지 마세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#controls
+
+### 아동과 민감 정보
+
+아동 계정을 만들지 않고 이름, 연락처, 다른 민감 정보도 묻지 않습니다. 권장 연령은 4+이며 가족과 함께 쓸 수 있습니다. 로컬 프로젝트에 남기고 싶지 않은 사진은 가져오지 마세요. 아동 개인정보를 모으도록 설계되지 않았습니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#children
+
+### 제3자와 서버
+
+앱에는 타사 런타임 SDK가 없으며 개발자 서버에 연결하지 않습니다. 배경 제거는 기기의 Apple Vision을 사용합니다. 웹사이트는 GitHub Pages에서 호스팅하며 제공자는 페이지 제공을 위해 IP 주소와 기본 요청 로그를 자체 개인정보 설명에 따라 처리할 수 있습니다. 웹사이트는 분석이나 광고 스크립트를 추가하지 않습니다. 이메일은 관련 메일 제공자가 처리합니다.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#third
+
+### 업데이트와 연락
+
+개인정보 실무가 실질적으로 바뀌면 이 방침과 날짜를 고칩니다. 개발자: Shanghai Qishan Cultural Communication Co., Ltd. 질문은 281916057@qq.com 으로 보내세요.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ko/privacy/#contact
+
+
+## Español (es)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/es/home/
+
+Fuse Beads: Pattern Maker es una app para iPhone y iPad de Shanghai Qishan Cultural Communication Co., Ltd. El nombre chino es 拼豆时光. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. Convierte una foto de Fotos, la cámara o Archivos en un patrón para un tablero real, e incluye 24 diseños originales. Generación, edición, materiales, seguimiento y copias se quedan en el dispositivo. No recopila datos, no habla con un servidor del desarrollador y no lleva anuncios ni SDK de analítica.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/es/
+
+### ¿Se suben mis fotos?
+
+No. Las fotos del selector, la cámara o Archivos se procesan solo en el dispositivo. La limpieza de fondo usa Apple Vision en el dispositivo. Fotos y máscaras no van a un servidor.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-1
+
+### ¿Por qué el patrón se ve mal?
+
+Depende de la nitidez, el recorte, el tamaño, el límite de color y el detalle. El camino habitual es 40×40 con 16 colores. Usa la vista previa, confirma frente al original o vuelve. Tras guardar también puedes regenerar desde el original.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-2
+
+### ¿Cómo funciona la limpieza de fondo?
+
+Va apagada por defecto. Al activarla protege el motivo en el dispositivo y trata el fondo conectado como celdas vacías. Si se cortan bordes o queda fondo, apágala y edita a mano, o usa una foto más clara.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-3
+
+### ¿Puedo comprar con los códigos de pantalla?
+
+Son referencias aproximadas, no colores de fábrica. Pantallas y lotes varían. Compara la carta física actual antes de una compra grande.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-4
+
+### ¿Dónde van PNG y PDF?
+
+Exporta desde el espacio de trabajo o el menú del proyecto. El PNG puede guardarse en Fotos con acceso solo para añadir; la app no lee la biblioteca con ese permiso. Los PDF llevan coordenadas. Tableros grandes como 58×58 añaden páginas 20×20. El resto usa la hoja de compartir.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-5
+
+### Falta un proyecto o no abre.
+
+Los datos están en Application Support/BeadTime. Los dañados se aíslan como projects-invalid y el resto abre. Exporta primero una copia. Si el archivo de biblioteca es demasiado grande, el original se aparta y no se sobrescribe.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-6
+
+### ¿Cómo se fusionan las copias?
+
+Exporta una copia JSON desde los ajustes e impórtala para combinar proyectos. Para el mismo proyecto se conserva la fecha de modificación más reciente. Se rechazan esquemas de archivo no compatibles; el esquema actual es 1. El límite es de 40 MiB por copia y 200 proyectos tras combinar. Los proyectos no válidos pueden omitirse.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-7
+
+### ¿Desinstalar guarda los patrones?
+
+No. Borra patrones, vistas previas y progreso del entorno aislado. Exporta una copia local antes de quitar la app o cambiar de teléfono.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-8
+
+### ¿Cómo copio el diagnóstico?
+
+Yo → Ajustes y privacidad → Copiar información de diagnóstico. Incluye versión, dispositivo, sistema y número de proyectos locales, no fotos ni patrones. Pégalo en el correo de soporte.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-9
+
+### ¿Qué idiomas hay?
+
+Inglés, chino simplificado, chino tradicional, japonés, coreano, español, francés, alemán, portugués de Brasil, italiano, ruso, árabe (derecha a izquierda) e hindi. Sigue el sistema o fija un idioma en Ajustes.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-10
+
+### ¿Para qué la cámara?
+
+Solo si eliges hacer una foto para un patrón. Esa foto también se procesa en el dispositivo. No usa ubicación, micrófono, contactos ni seguimiento.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-11
+
+### ¿Funciona sin red?
+
+Sí. El trabajo central es totalmente sin conexión. Solo hace falta red para abrir este sitio o enviar correo. La app no contacta un servidor del desarrollador.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-12
+
+### ¿Es gratis?
+
+Sí. Gratis en el App Store, sin compras, suscripciones ni cuentas. Ábrela y empieza.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-13
+
+### ¿Qué dispositivos son compatibles?
+
+La app admite iPhone y iPad desde iOS 17 o iPadOS 17. Se adapta a orientación vertical y horizontal, ventanas pequeñas y texto grande. Consulta la disponibilidad actual en el App Store.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-14
+
+### ¿Quién la hace?
+
+Shanghai Qishan Cultural Communication Co., Ltd. Correo: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-15
+
+### ¿La cámara o guardar en Fotos está bloqueado?
+
+Abre los permisos de Fuse Beads en Ajustes del sistema y permite la cámara o añadir a Fotos. La cámara solo hace falta para tomar una foto. También puedes importar una imagen con el selector del sistema o Archivos.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-16
+
+### ¿Cómo se usa en iPad?
+
+Admite orientación vertical y horizontal y ventanas pequeñas. Si se recorta contenido, amplía la ventana o gira el dispositivo. El tamaño de texto y VoiceOver se ajustan en Accesibilidad del sistema. Si persiste, envía los diagnósticos y el tamaño de ventana utilizado.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-17
+
+### ¿Falla exportar o importar una copia?
+
+Comprueba primero el espacio libre del dispositivo y que puedas escribir en el destino. Conserva la copia anterior y no empieces por desinstalar la app. El límite es de 40 MiB por copia y 200 proyectos tras combinar. Revisa también el esquema del archivo; si hace falta, envía el error y los diagnósticos al soporte.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/
+
+Última actualización: 30 de octubre de 2026. Se aclaran iPhone/iPad, preferencias locales, copias del sistema, archivos temporales y alojamiento web.
+
+### Qué recopilamos
+
+Nada. El desarrollador no recopila fotos, patrones, listas de materiales, progreso ni registros de uso. No hay cuenta, publicidad, SDK de analítica, informe de fallos, sincronización en la nube ni seguimiento entre apps. La etiqueta de privacidad del App Store dice que no recopilamos datos de esta app. El manifiesto no lista tipos recopilados. UserDefaults guarda la finalización de la bienvenida, el idioma, los últimos ajustes de tamaño del tablero, límite de colores, marca y detalle, y la cantidad por paquete. Son preferencias locales que no se envían al desarrollador.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#collect
+
+### Fotos y cámara
+
+Las fotos de la biblioteca o Archivos, o las tomadas con la cámara del sistema, se usan solo en el dispositivo para crear patrones. Si la limpieza de fondo está activa, Apple Vision encuentra y protege el motivo en el dispositivo. Fotos y máscaras no van a Apple, al desarrollador ni a ningún servidor. La app guarda una vista previa comprimida aparte en su contenedor para editar y copiar.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#photos
+
+### Almacenamiento local y retención
+
+Metadatos, celdas, marcas de material, progreso y vistas previas comprimidas permanecen en Application Support/BeadTime dentro del entorno aislado hasta que borres un proyecto, todos los proyectos o la app. Puedes exportar copia, PNG o PDF en cualquier momento. Los datos no válidos se aíslan y no sobrescriben otros proyectos. Según tus ajustes del sistema, los datos de la app pueden incluirse en copias de seguridad del dispositivo o de iCloud. Es una copia del sistema, no una sincronización ofrecida por la app. Al realizar la siguiente exportación correspondiente, la app elimina de su carpeta temporal los archivos de exportación o copia con más de 24 horas. Solo consulta la fecha de modificación de sus propios archivos temporales.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#storage
+
+### Guardar en Fotos y compartir
+
+Para guardar un PNG en Fotos, la app solicita solo permiso para añadir y no lee la fototeca con ese permiso. Compartes los demás archivos mediante la hoja del sistema hacia el destino que eliges. Cada destino trata los archivos según sus propias reglas. Los ajustes del sistema también pueden permitir copias del dispositivo o de iCloud.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#share
+
+### Tus controles
+
+Puedes dar solo las fotos elegidas, borrar proyectos o todos los proyectos locales y exportar copias. Este sitio es estático y de solo lectura. No pide inicio de sesión ni usa formularios, cookies, analítica, anuncios ni base de datos. El idioma va en la dirección. El buzón de soporte solo recibe lo que envías. Si nos escribes por iniciativa propia, el soporte recibe los datos de contacto y el contenido que aportas para atender la consulta. No es una recopilación automática de la app.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#controls
+
+### Menores e información sensible
+
+La app no crea cuentas infantiles ni pide nombre, contacto u otros datos sensibles. La edad sugerida es 4+ y las familias pueden usarla juntas. No importes una foto cuyo contenido no quieras guardar en un proyecto local. No está diseñada para recopilar datos personales de menores.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#children
+
+### Terceros y servidores
+
+La app no incluye SDK de terceros en tiempo de ejecución ni contacta con un servidor del desarrollador. Vision procesa las imágenes en el dispositivo. El sitio se aloja en GitHub Pages; GitHub puede tratar direcciones IP y registros básicos de solicitudes para prestar el alojamiento. El sitio no utiliza scripts de análisis, anuncios o seguimiento, formularios ni cookies. Los proveedores de correo implicados procesan los mensajes.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#third
+
+### Actualizaciones y contacto
+
+Si las prácticas cambian de forma material, actualizaremos esta política y su fecha. Desarrollador: Shanghai Qishan Cultural Communication Co., Ltd. Preguntas: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/es/privacy/#contact
+
+
+## Français (fr)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/fr/home/
+
+Fuse Beads: Pattern Maker est une appli pour iPhone et iPad de Shanghai Qishan Cultural Communication Co., Ltd. Le nom chinois est 拼豆时光. Identifiant Apple 6799906107. Bundle ID com.weizhichao.beadday. Elle transforme une photo de Photos, de l’appareil ou de Fichiers en motif réalisable sur une vraie plaque, avec 24 motifs originaux intégrés. Génération, édition, quantités, suivi et sauvegardes restent sur l’appareil. L’appli ne collecte pas de données, n’appelle aucun serveur développeur et n’embarque ni publicité ni SDK d’analyse.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/fr/
+
+### Mes photos sont-elles envoyées ?
+
+Non. Les photos du sélecteur, de l’appareil ou de Fichiers sont traitées seulement sur l’appareil. Le nettoyage du fond utilise Apple Vision sur l’appareil. Photos et masques ne partent pas vers un serveur.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-1
+
+### Pourquoi le motif paraît faux ?
+
+La netteté, le cadrage, la taille, la limite de couleurs et le mode de détail comptent. Le chemin habituel est 40×40 et 16 couleurs. Utilisez l’aperçu, confirmez face à l’original ou revenez. Après enregistrement, vous pouvez régénérer depuis l’original.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-2
+
+### Comment marche le nettoyage du fond ?
+
+Il est éteint par défaut. Activé, il protège le sujet sur l’appareil et traite le fond connecté comme des cases vides. Si les bords disparaissent ou que le fond reste, éteignez-le et corrigez à la main, ou prenez une photo plus nette.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-3
+
+### Puis-je acheter avec les codes écran ?
+
+Ce sont des références approximatives, pas des teintes d’usine. Écrans et lots varient. Comparez la carte physique actuelle avant un gros achat.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-4
+
+### Où vont PNG et PDF ?
+
+Export depuis l’espace de travail ou le menu du projet. Le PNG peut aller dans Photos avec un accès ajout seulement ; l’appli ne lit pas la photothèque avec cet accès. Les PDF ont des coordonnées. Les grandes plaques comme 58×58 ajoutent des pages 20×20. Le reste passe par la feuille de partage.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-5
+
+### Un projet manque ou ne s’ouvre pas.
+
+Les données sont dans Application Support/BeadTime. Les éléments abîmés sont isolés en projects-invalid, le reste s’ouvre. Exportez d’abord une sauvegarde. Si le fichier bibliothèque est trop grand, l’original est mis de côté et n’est pas écrasé.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-6
+
+### Comment fusionner une sauvegarde ?
+
+Exportez une sauvegarde JSON dans les réglages et importez-la pour fusionner les projets. Pour un même projet, la modification la plus récente l’emporte. Un schéma de fichier non pris en charge est refusé ; le schéma actuel est 1. La limite est de 40 Mio par sauvegarde et de 200 projets après fusion. Les projets invalides peuvent être ignorés.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-7
+
+### La désinstallation garde-t-elle les motifs ?
+
+Non. Elle efface motifs, aperçus et progression du bac à sable. Exportez une sauvegarde locale avant de supprimer l’appli ou de changer de téléphone.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-8
+
+### Comment copier le diagnostic ?
+
+Moi → Réglages et confidentialité → Copier les informations de diagnostic. Version, appareil, système et nombre de projets locaux, sans photos ni motifs. Collez-le dans le mail d’assistance.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-9
+
+### Quelles langues ?
+
+Anglais, chinois simplifié, chinois traditionnel, japonais, coréen, espagnol, français, allemand, portugais brésilien, italien, russe, arabe (droite à gauche) et hindi. Suivez le système ou verrouillez une langue dans Réglages.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-10
+
+### Pourquoi l’appareil photo ?
+
+Seulement si vous choisissez de photographier un motif. Cette photo est aussi traitée sur l’appareil. Pas de localisation, micro, contacts ni suivi.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-11
+
+### Ça marche sans réseau ?
+
+Oui. La création est hors ligne. Le réseau sert à ouvrir ce site ou envoyer un mail. L’appli n’appelle pas de serveur développeur.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-12
+
+### L’appli est-elle gratuite ?
+
+Oui. Gratuite sur l’App Store, sans achats intégrés, abonnement ni compte. Ouvrez et commencez.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-13
+
+### Quels appareils sont compatibles ?
+
+L’app prend en charge iPhone et iPad à partir d’iOS 17 ou d’iPadOS 17. L’interface s’adapte au portrait, au paysage, aux petites fenêtres et au texte agrandi. Consultez l’App Store pour la disponibilité actuelle.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-14
+
+### Qui édite Fuse Beads ?
+
+Shanghai Qishan Cultural Communication Co., Ltd. Assistance : 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-15
+
+### L’appareil photo ou l’enregistrement dans Photos est bloqué.
+
+Ouvrez les autorisations de Fuse Beads dans les Réglages système et autorisez l’appareil photo ou l’ajout à Photos. L’appareil photo n’est nécessaire que pour prendre une photo. Vous pouvez aussi importer une image avec le sélecteur système ou Fichiers.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-16
+
+### Comment utiliser l’app sur iPad ?
+
+Le portrait, le paysage et les petites fenêtres sont pris en charge. Si du contenu est coupé, agrandissez la fenêtre ou tournez l’appareil. La taille du texte et VoiceOver se règlent dans les options d’accessibilité du système. Si le problème persiste, envoyez les diagnostics et la taille de fenêtre utilisée.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-17
+
+### L’export ou l’import d’une sauvegarde échoue.
+
+Vérifiez d’abord l’espace libre de l’appareil et un emplacement d’enregistrement accessible. Gardez l’ancienne sauvegarde et ne commencez pas par désinstaller l’app. La limite est de 40 Mio par sauvegarde et de 200 projets après fusion. Vérifiez aussi le schéma du fichier ; si nécessaire, envoyez le message d’erreur et les diagnostics au support.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/
+
+Dernière mise à jour : 30 octobre 2026. Précisions sur iPhone/iPad, les préférences locales, les sauvegardes système, les fichiers temporaires et l’hébergement du site.
+
+### Ce que nous collectons
+
+Rien. Le développeur ne collecte ni photos, ni motifs, ni listes de matériaux, ni progression, ni journaux d’usage. Pas de compte, publicité, SDK d’analyse, rapport de plantage, sync cloud ni suivi inter-applis. L’étiquette App Store dit que nous ne collectons pas de données de cette appli. Le manifeste de confidentialité ne liste aucun type de données collectées. UserDefaults conserve la fin de la présentation, la langue, les derniers réglages de dimensions, limite de couleurs, marque et niveau de détail, ainsi que la quantité par sachet. Ces préférences restent locales et ne sont pas envoyées au développeur.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#collect
+
+### Photos et appareil
+
+Les photos choisies dans la photothèque ou Fichiers, ou prises avec l’appareil système, servent seulement sur l’appareil à créer des motifs. Si le nettoyage du fond est actif, Apple Vision trouve et protège le sujet sur l’appareil. Photos et masques ne partent ni vers Apple, ni vers le développeur, ni vers un serveur. L’appli garde un aperçu compressé distinct dans son conteneur pour l’édition et les sauvegardes.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#photos
+
+### Stockage local et conservation
+
+Métadonnées, perles, coches matériaux, progression et aperçus compressés restent dans Application Support/BeadTime du bac à sable jusqu’à suppression d’un projet, de tous les projets ou de l’appli. Vous pouvez exporter sauvegarde, PNG ou PDF à tout moment. Les données invalides sont isolées et n’écrasent pas les autres projets. Selon vos réglages système, les données de l’app peuvent être incluses dans les sauvegardes de l’appareil ou iCloud. Il s’agit d’une sauvegarde système, pas d’une synchronisation proposée par l’app. Lors d’un prochain export correspondant, l’app supprime de son dossier temporaire les fichiers d’export ou de sauvegarde de plus de 24 heures. Elle lit seulement la date de modification de ses propres fichiers temporaires.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#storage
+
+### Enregistrement dans Photos et partage
+
+Pour enregistrer un PNG dans Photos, l’app demande uniquement l’ajout et ne lit pas la photothèque avec cette autorisation. Vous partagez les autres exports par la feuille de partage système vers une destination choisie. Chaque destination traite ces fichiers selon ses propres règles. Des sauvegardes de l’appareil ou iCloud peuvent aussi être activées dans les réglages système.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#share
+
+### Vos contrôles
+
+Vous pouvez ne fournir que les photos choisies, supprimer des projets ou tous les projets locaux, et exporter des sauvegardes. Ce site est statique en lecture seule. Pas de connexion, formulaire, cookie, analyse, publicité ni base. La langue vient de l’adresse. La boîte d’assistance ne reçoit que ce que vous envoyez. Si vous nous écrivez volontairement, le support reçoit les coordonnées et le contenu fournis pour traiter votre demande. Ce n’est pas une collecte automatique par l’app.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#controls
+
+### Enfants et informations sensibles
+
+L’appli ne crée pas de comptes enfants et ne demande ni nom, ni coordonnées, ni autres données sensibles. L’âge suggéré est 4+, les familles peuvent l’utiliser ensemble. N’importez pas une photo dont le contenu ne doit pas rester dans un projet local. L’appli n’est pas conçue pour collecter des données d’enfants.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#children
+
+### Tiers et serveurs
+
+L’app ne contient aucun SDK tiers exécuté à l’usage et ne contacte pas de serveur métier du développeur. Vision traite les images sur l’appareil. Le site est hébergé par GitHub Pages ; GitHub peut traiter les adresses IP et les journaux de requêtes de base nécessaires à l’hébergement. Le site lui-même n’utilise ni scripts d’analyse, de publicité ou de suivi, ni formulaires ou cookies. Les fournisseurs de messagerie concernés traitent les e-mails.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#third
+
+### Mises à jour et contact
+
+Si les pratiques changent de façon substantielle, nous mettrons à jour cette politique et sa date. Éditeur : Shanghai Qishan Cultural Communication Co., Ltd. Questions : 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/fr/privacy/#contact
+
+
+## Deutsch (de)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/de/home/
+
+Fuse Beads: Pattern Maker ist eine App für iPhone und iPad von Shanghai Qishan Cultural Communication Co., Ltd. Der chinesische Name ist 拼豆时光. Apple-ID 6799906107. Bundle-ID com.weizhichao.beadday. Sie macht aus einem Foto aus Fotos, Kamera oder Dateien eine Vorlage für eine echte Steckplatte und enthält 24 eigene Vorlagen. Erzeugung, Bearbeitung, Stückzahlen, Nachlegen und Sicherungen bleiben auf dem Gerät. Die App erhebt keine Daten, spricht keinen Entwickler-Server an und enthält weder Werbung noch Analyse-SDK.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/de/
+
+### Werden meine Fotos hochgeladen?
+
+Nein. Fotos aus der Systemauswahl, der Kamera oder Dateien werden nur auf dem Gerät verarbeitet. Die smarte Hintergrundentfernung nutzt Apple Vision auf dem Gerät. Fotos und Masken gehen nicht auf einen Server.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-1
+
+### Warum sieht die Vorlage falsch aus?
+
+Scharfe Vorlage, Zuschnitt, Maß, Farbgrenze und Detailmodus entscheiden. Der übliche Qualitätsweg ist 40×40 mit 16 Farben. Nutze die Live-Vorschau, vergleiche mit dem Original oder gehe zurück. Nach dem Speichern kannst du vom Original neu erzeugen.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-2
+
+### Wie funktioniert die smarte Hintergrundentfernung?
+
+Sie ist standardmäßig aus. Eingeschaltet schützt sie das Motiv auf dem Gerät und behandelt verbundenen Hintergrund als leere Zellen. Verschwinden Kanten oder bleibt Hintergrund, schalte sie aus und editiere per Hand, oder nimm ein klareres Motivfoto.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-3
+
+### Kann ich nach Bildschirmcodes kaufen?
+
+Siehe sie als ungefähre Referenz, nicht als Werksfarbe. Displays und Chargen weichen ab. Vergleiche vor großen Einkäufen die aktuelle physische Karte.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-4
+
+### Wohin gehen PNG und PDF?
+
+Export aus Arbeitsbereich oder Projektmenü. PNG kann mit Nur-hinzufügen-Recht in Fotos. Die App liest die Mediathek damit nicht. PDFs haben Koordinaten. Große Platten wie 58×58 bekommen 20×20-Seiten. Anderes Teilen läuft über das Systemmenü.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-5
+
+### Ein Projekt fehlt oder öffnet nicht.
+
+Daten liegen in Application Support/BeadTime. Beschädigte Einträge werden als projects-invalid isoliert, der Rest öffnet. Exportiere zuerst eine Sicherung. Ist die Bibliothek zu groß, wird das Original beiseitegelegt und nicht überschrieben.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-6
+
+### Wie werden Sicherungen zusammengeführt?
+
+Exportiere in den Einstellungen eine JSON-Sicherung und importiere sie dort zum Zusammenführen. Beim gleichen Projekt zählt die neuere Änderungszeit. Nicht unterstützte Dateischemata werden abgelehnt; das aktuelle Schema ist 1. Die Grenze liegt bei 40 MiB pro Sicherung und 200 Projekten nach dem Zusammenführen. Ungültige Projekte können übersprungen werden.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-7
+
+### Bleiben Vorlagen nach dem Löschen?
+
+Nein. Deinstallieren löscht Sandbox-Vorlagen, Vorschauen und Fortschritt. Exportiere vorher eine lokale Sicherung.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-8
+
+### Wie kopiere ich die Diagnose?
+
+Ich → Einstellungen und Datenschutz → Diagnoseinformationen kopieren. Enthalten sind App-Version, Gerät, System und lokale Projektzahl, keine Fotos oder Vorlagen. Füge den Text in die Support-Mail ein.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-9
+
+### Welche Sprachen gibt es?
+
+Englisch, vereinfachtes Chinesisch, traditionelles Chinesisch, Japanisch, Koreanisch, Spanisch, Französisch, Deutsch, brasilianisches Portugiesisch, Italienisch, Russisch, Arabisch (rechts nach links) und Hindi. Folge dem System oder lege eine Sprache in den Einstellungen fest.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-10
+
+### Wozu die Kameraerlaubnis?
+
+Nur wenn du ein Foto für eine Vorlage aufnimmst. Auch das bleibt auf dem Gerät. Standort, Mikrofon, Kontakte und Tracking werden nicht genutzt.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-11
+
+### Geht es ohne Netz?
+
+Ja. Das Herstellen läuft vollständig offline. Netz brauchst du nur für diese Seite oder E-Mail. Die App spricht keinen Entwickler-Server an.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-12
+
+### Ist die App kostenlos?
+
+Ja. Fuse Beads ist im App Store kostenlos. Es gibt keine In-App-Käufe, Abos oder Konten. Öffnen und loslegen.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-13
+
+### Welche Geräte werden unterstützt?
+
+Die App unterstützt iPhone und iPad ab iOS 17 bzw. iPadOS 17. Die Oberfläche passt sich Hoch- und Querformat, kleineren Fenstern und größerer Schrift an. Die aktuelle Verfügbarkeit steht im App Store.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-14
+
+### Wer steckt dahinter?
+
+Shanghai Qishan Cultural Communication Co., Ltd. Support: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-15
+
+### Kamera oder Sichern in Fotos ist gesperrt.
+
+Öffne in den Systemeinstellungen die Berechtigungen für Fuse Beads und erlaube Kamera bzw. das Hinzufügen zu Fotos. Die Kamera wird nur für eigene Aufnahmen benötigt. Alternativ kannst du ein Bild über die Systemauswahl oder Dateien importieren.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-16
+
+### Wie nutze ich die App auf dem iPad?
+
+Hoch- und Querformat sowie kleinere Fenster werden unterstützt. Vergrößere bei abgeschnittenen Inhalten zuerst das Fenster oder drehe das Gerät. Textgröße und VoiceOver lassen sich in den Bedienungshilfen des Systems einstellen. Bei anhaltenden Problemen sende die Diagnose und die verwendete Fenstergröße.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-17
+
+### Sicherung oder Import schlägt fehl.
+
+Prüfe zuerst freien Gerätespeicher und einen beschreibbaren Speicherort. Behalte die alte Sicherung und deinstalliere die App nicht als ersten Lösungsversuch. Sicherungen dürfen höchstens 40 MiB groß sein; nach dem Zusammenführen sind höchstens 200 Projekte zulässig. Prüfe außerdem das Dateischema und sende bei Bedarf den Fehlertext und die Diagnose an den Support.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/
+
+Zuletzt aktualisiert: 30. Oktober 2026. Ergänzt wurden iPhone/iPad, lokale Einstellungen, Systemsicherungen, temporäre Dateien und Website-Hosting.
+
+### Was wir erheben
+
+Nichts. Der Entwickler erhebt aus der App keine Fotos, Vorlagen, Materiallisten, Fortschritte oder Nutzungsdaten. Es gibt kein Konto, keine Werbung, kein Analyse-SDK, keinen Absturzmelder, keine Cloud-Sync und kein Tracking über Apps hinweg. Das App-Store-Datenschutzlabel sagt: Wir erheben keine Daten aus dieser App. Das Privacy Manifest listet keine Datentypen. UserDefaults speichert den Abschluss der Einführung, die Sprache, zuletzt gewählte Plattenmaße, Farbgrenze, Marke und Detailmodus sowie die Packungsgröße für Material. Das sind lokale Einstellungen, die nicht an den Entwickler gesendet werden.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#collect
+
+### Fotos und Kamera
+
+Fotos aus Mediathek oder Dateien oder Aufnahmen mit der Systemkamera dienen nur auf dem Gerät dem Erzeugen von Vorlagen. Ist die smarte Hintergrundentfernung an, findet Apple Vision das Motiv auf dem Gerät. Fotos und Masken gehen nicht an Apple, den Entwickler oder einen Server. Die App legt eine eigene komprimierte Vorschau im Container für Bearbeitung und Sicherung ab.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#photos
+
+### Lokaler Speicher und Aufbewahrung
+
+Metadaten, Zellen, Materialhaken, Nachlegefortschritt und komprimierte Vorschauen bleiben in Application Support/BeadTime in der Sandbox, bis du ein Projekt löschst, alle Projekte in den Einstellungen löschst oder die App entfernst. Sicherung, PNG oder PDF kannst du jederzeit exportieren. Ungültige Daten werden isoliert und überschreiben andere Projekte nicht. Je nach deinen Systemeinstellungen können App-Daten in Geräte- oder iCloud-Backups enthalten sein. Das ist eine Systemsicherung und keine Synchronisierung durch die App. Temporäre Export- und Sicherungsdateien, die älter als 24 Stunden sind, werden beim nächsten entsprechenden Export im temporären App-Ordner bereinigt. Dabei liest die App nur Änderungszeiten ihrer eigenen temporären Dateien.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#storage
+
+### Speichern in Fotos und Teilen
+
+Beim Sichern eines PNG in Fotos fragt die App nur nach dem Hinzufügen und liest mit dieser Erlaubnis keine Mediathek. Andere Exporte teilst du über das Systemmenü mit einem selbst gewählten Ziel. Diese Ziele verarbeiten Dateien nach ihren eigenen Regeln. Zusätzlich können Systemeinstellungen Geräte- oder iCloud-Backups erlauben.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#share
+
+### Deine Kontrolle
+
+Du kannst nur gewählte Fotos geben, Projekte oder alle lokalen Projekte löschen und Sicherungen exportieren. Diese Website ist statisch und nur lesbar. Sie verlangt keine Anmeldung und nutzt keine Formulare, Cookies, Analysen, Werbung oder Datenbank. Die Sprache steckt in der Adresse. Das Support-Postfach erhält nur, was du sendest. Wenn du uns freiwillig eine E-Mail schickst, erhält der Support die von dir angegebenen Kontaktdaten und Inhalte zur Bearbeitung deiner Anfrage. Das ist keine automatische Datenerhebung durch die App.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#controls
+
+### Kinder und sensible Daten
+
+Die App legt keine Kinderkonten an und fragt nicht nach Namen, Kontaktdaten oder anderen sensiblen Angaben. Die Altersfreigabe ist 4+, Familien dürfen sie gemeinsam nutzen. Importiere kein Foto, dessen Inhalt du nicht lokal speichern willst. Die App ist nicht darauf ausgelegt, personenbezogene Daten von Kindern zu erheben.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#children
+
+### Dritte und Server
+
+Die App enthält kein Laufzeit-SDK Dritter und kontaktiert kein Entwickler-Backend. Vision verarbeitet Bilder auf dem Gerät. Die Website liegt bei GitHub Pages; GitHub kann IP-Adressen und grundlegende Anfrageprotokolle für den Hostingbetrieb verarbeiten. Die Website selbst verwendet keine Analyse-, Werbe- oder Tracking-Skripte und keine Formulare oder Cookies. E-Mail wird von den beteiligten Mailanbietern verarbeitet.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#third
+
+### Updates und Kontakt
+
+Ändert sich die Praxis wesentlich, aktualisieren wir diese Erklärung und das Datum. Entwickler: Shanghai Qishan Cultural Communication Co., Ltd. Fragen an 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/de/privacy/#contact
+
+
+## Português (Brasil) (pt-BR)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/home/
+
+Fuse Beads: Pattern Maker é um app para iPhone e iPad da Shanghai Qishan Cultural Communication Co., Ltd. O nome chinês é 拼豆时光. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. Transforma uma foto de Fotos, da câmera ou de Arquivos em um padrão para um tabuleiro real e inclui 24 desenhos originais. Geração, edição, materiais, acompanhamento e backups ficam no aparelho. Não coleta dados, não fala com servidor do desenvolvedor e não tem anúncios nem SDK de análise.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/
+
+### Minhas fotos são enviadas?
+
+Não. Fotos do seletor, da câmera ou de Arquivos são processadas só no aparelho. A limpeza de fundo usa Apple Vision no aparelho. Fotos e máscaras não vão a um servidor.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-1
+
+### Por que o padrão parece errado?
+
+Depende da nitidez, do recorte, do tamanho, do limite de cores e do detalhe. O caminho usual é 40×40 com 16 cores. Use a prévia, confirme no original ou volte. Depois de salvar também pode gerar de novo a partir do original.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-2
+
+### Como funciona a limpeza de fundo?
+
+Vem desligada. Ligada, protege o assunto no aparelho e trata o fundo ligado como células vazias. Se as bordas sumirem ou o fundo ficar, desligue e edite à mão, ou use uma foto mais nítida.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-3
+
+### Posso comprar pelos códigos da tela?
+
+São referências aproximadas, não cores de fábrica. Telas e lotes variam. Compare a carta física atual antes de uma compra grande.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-4
+
+### Para onde vão PNG e PDF?
+
+Exporte do espaço de trabalho ou do menu do projeto. O PNG pode ir para Fotos com acesso só de adicionar; o app não lê a biblioteca com essa permissão. PDFs têm coordenadas. Tabuleiros grandes como 58×58 ganham páginas 20×20. O resto usa a folha de compartilhamento.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-5
+
+### Um projeto sumiu ou não abre.
+
+Os dados ficam em Application Support/BeadTime. Itens danificados são isolados como projects-invalid e o resto abre. Exporte um backup primeiro. Se o arquivo da biblioteca for grande demais, o original é afastado e não é sobrescrito.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-6
+
+### Como os backups se misturam?
+
+Exporte um backup JSON nos ajustes e importe-o para mesclar projetos. Para o mesmo projeto vale a alteração mais recente. Esquemas de arquivo não compatíveis são recusados; o esquema atual é 1. O limite é de 40 MiB por backup e 200 projetos após a mesclagem. Projetos inválidos podem ser ignorados.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-7
+
+### Desinstalar guarda os padrões?
+
+Não. Apaga padrões, prévias e progresso da sandbox. Exporte um backup local antes de remover o app ou trocar de telefone.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-8
+
+### Como copio o diagnóstico?
+
+Eu → Ajustes e privacidade → Copiar informações de diagnóstico. Inclui versão, aparelho, sistema e número de projetos locais, sem fotos nem padrões. Cole no e-mail de suporte.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-9
+
+### Quais idiomas entram?
+
+Inglês, chinês simplificado, chinês tradicional, japonês, coreano, espanhol, francês, alemão, português do Brasil, italiano, russo, árabe (direita para a esquerda) e hindi. Siga o sistema ou fixe um idioma em Ajustes.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-10
+
+### Para que a câmera?
+
+Só se você escolher tirar uma foto para um padrão. Essa foto também é processada no aparelho. Não usa localização, microfone, contatos nem rastreamento.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-11
+
+### Funciona sem rede?
+
+Sim. O trabalho central é offline. A rede só serve para abrir este site ou enviar e-mail. O app não fala com servidor do desenvolvedor.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-12
+
+### O app é grátis?
+
+Sim. Grátis na App Store, sem compras, assinaturas ou contas. Abra e comece.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-13
+
+### Quais aparelhos são compatíveis?
+
+O app oferece suporte a iPhone e iPad a partir do iOS 17 ou iPadOS 17. A interface se adapta a retrato, paisagem, janelas pequenas e texto ampliado. Confira a disponibilidade atual na App Store.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-14
+
+### Quem faz o app?
+
+Shanghai Qishan Cultural Communication Co., Ltd. E-mail: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-15
+
+### A câmera ou salvar em Fotos está bloqueado?
+
+Abra as permissões do Fuse Beads nos Ajustes do sistema e permita a câmera ou a adição a Fotos. A câmera só é necessária para tirar uma foto. Você também pode importar uma imagem pelo seletor do sistema ou por Arquivos.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-16
+
+### Como usar o app no iPad?
+
+Retrato, paisagem e janelas pequenas são compatíveis. Se algum conteúdo ficar cortado, amplie a janela ou gire o aparelho. O tamanho do texto e o VoiceOver são ajustados na acessibilidade do sistema. Se continuar, envie o diagnóstico e o tamanho da janela usada.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-17
+
+### Falha ao exportar ou importar backup?
+
+Primeiro confira o espaço livre do aparelho e se o destino permite gravação. Guarde o backup anterior e não comece desinstalando o app. O limite é de 40 MiB por backup e 200 projetos após a mesclagem. Confira também o esquema do arquivo; se necessário, envie o erro e o diagnóstico ao suporte.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/
+
+Última atualização: 30 de outubro de 2026. Esclarecimentos sobre iPhone/iPad, preferências locais, backups do sistema, arquivos temporários e hospedagem do site.
+
+### O que coletamos
+
+Nada. O desenvolvedor não coleta fotos, padrões, listas de materiais, progresso nem registros de uso. Não há conta, anúncio, SDK de análise, relatório de falha, sync na nuvem nem rastreamento entre apps. O rótulo da App Store diz que não coletamos dados deste app. O manifesto não lista tipos coletados. UserDefaults guarda a conclusão da apresentação, o idioma, os últimos ajustes de tamanho, limite de cores, marca e detalhe, além da quantidade por pacote. São preferências locais e não são enviadas ao desenvolvedor.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#collect
+
+### Fotos e câmera
+
+Fotos da biblioteca ou de Arquivos, ou capturadas com a câmera do sistema, servem só no aparelho para montar padrões. Se a limpeza de fundo estiver ligada, o Apple Vision acha e protege o assunto no aparelho. Fotos e máscaras não vão à Apple, ao desenvolvedor nem a qualquer servidor. O app guarda uma prévia compactada à parte no recipiente para editar e fazer backup.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#photos
+
+### Armazenamento local e retenção
+
+Metadados, células, marcas de material, progresso e prévias compactadas ficam em Application Support/BeadTime na sandbox até você apagar um projeto, todos os projetos ou o app. Você pode exportar backup, PNG ou PDF a qualquer momento. Dados inválidos são isolados e não sobrescrevem outros projetos. Conforme seus ajustes do sistema, os dados do app podem ser incluídos em backups do aparelho ou do iCloud. Isso é backup do sistema, não sincronização oferecida pelo app. Na próxima exportação correspondente, o app limpa da própria pasta temporária os arquivos de exportação ou backup com mais de 24 horas. Ele lê apenas a data de modificação dos seus próprios arquivos temporários.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#storage
+
+### Salvar em Fotos e compartilhar
+
+Para salvar um PNG em Fotos, o app pede apenas permissão de adição e não lê a fototeca com essa permissão. Você compartilha os outros arquivos pela folha do sistema para o destino escolhido. Cada destino trata os arquivos conforme suas próprias regras. Os ajustes do sistema também podem permitir backups do aparelho ou do iCloud.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#share
+
+### Seus controles
+
+Você pode fornecer só as fotos escolhidas, apagar projetos ou todos os projetos locais e exportar backups. Este site é estático e só leitura. Não pede login e não usa formulários, cookies, análise, anúncios nem banco. O idioma vem do endereço. A caixa de suporte só recebe o que você envia. Se você nos envia um e-mail por iniciativa própria, o suporte recebe os dados de contato e o conteúdo fornecidos para atender à solicitação. Isso não é coleta automática pelo app.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#controls
+
+### Crianças e dados sensíveis
+
+O app não cria contas infantis e não pede nome, contato nem outros dados sensíveis. A faixa sugerida é 4+ e famílias podem usar juntas. Não importe uma foto cujo conteúdo você não queira guardar num projeto local. Não foi feito para coletar dados pessoais de crianças.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#children
+
+### Terceiros e servidores
+
+O app não contém SDK de terceiros em execução nem acessa um servidor do desenvolvedor. O Vision processa as imagens no aparelho. O site é hospedado no GitHub Pages; o GitHub pode tratar endereços IP e registros básicos de solicitações para operar a hospedagem. O site não usa scripts de análise, anúncios ou rastreamento, formulários ou cookies. Os provedores de e-mail envolvidos processam as mensagens.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#third
+
+### Atualizações e contato
+
+Se as práticas mudarem de forma material, atualizaremos esta política e a data. Desenvolvedor: Shanghai Qishan Cultural Communication Co., Ltd. Perguntas: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/pt-BR/privacy/#contact
+
+
+## Italiano (it)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/it/home/
+
+Fuse Beads: Pattern Maker è un’app per iPhone e iPad di Shanghai Qishan Cultural Communication Co., Ltd. Il nome cinese è 拼豆时光. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. Trasforma una foto da Foto, fotocamera o File in uno schema per una tavola vera e include 24 disegni originali. Generazione, modifica, materiali, seguito e backup restano sul dispositivo. Non raccoglie dati, non contatta un server dello sviluppatore e non ha pubblicità né SDK di analisi.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/it/
+
+### Le foto vengono caricate?
+
+No. Le foto del selettore, della fotocamera o di File si elaborano solo sul dispositivo. La rimozione dello sfondo usa Apple Vision sul dispositivo. Foto e maschere non vanno su un server.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-1
+
+### Perché lo schema sembra sbagliato?
+
+Dipende da nitidezza, ritaglio, misura, limite colori e dettaglio. Il percorso usuale è 40×40 con 16 colori. Usa l’anteprima, conferma sull’originale o torna indietro. Dopo il salvataggio puoi anche rigenerare dall’originale.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-2
+
+### Come funziona la rimozione dello sfondo?
+
+È spenta di default. Attivata, protegge il soggetto sul dispositivo e tratta lo sfondo connesso come celle vuote. Se i bordi spariscono o resta lo sfondo, spegnila e modifica a mano, o usa una foto più chiara.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-3
+
+### Posso comprare dai codici a schermo?
+
+Sono riferimenti approssimati, non colori di fabbrica. Display e lotti variano. Confronta la cartella fisica aggiornata prima di un acquisto grande.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-4
+
+### Dove vanno PNG e PDF?
+
+Esporta dallo spazio di lavoro o dal menu del progetto. Il PNG si può salvare in Foto con accesso solo aggiunta; l’app non legge la libreria con quel permesso. I PDF hanno coordinate. Le tavole grandi come 58×58 aggiungono pagine 20×20. Il resto usa il foglio di condivisione.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-5
+
+### Un progetto manca o non si apre.
+
+I dati sono in Application Support/BeadTime. Gli elementi danneggiati sono isolati come projects-invalid, il resto si apre. Esporta prima un backup. Se il file libreria è troppo grande, l’originale viene messo da parte e non sovrascritto.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-6
+
+### Come si uniscono i backup?
+
+Esporta un backup JSON dalle impostazioni e importalo per unire i progetti. Per lo stesso progetto prevale la modifica più recente. Gli schemi di file non supportati vengono rifiutati; lo schema attuale è 1. Il limite è di 40 MiB per backup e 200 progetti dopo l’unione. I progetti non validi possono essere saltati.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-7
+
+### Disinstallando restano gli schemi?
+
+No. Cancella schemi, anteprime e progressi della sandbox. Esporta un backup locale prima di togliere l’app o cambiare telefono.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-8
+
+### Come copio la diagnostica?
+
+Io → Impostazioni e privacy → Copia informazioni diagnostiche. Include versione, dispositivo, sistema e numero di progetti locali, non foto o schemi. Incollalo nella mail di supporto.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-9
+
+### Quali lingue ci sono?
+
+Inglese, cinese semplificato, cinese tradizionale, giapponese, coreano, spagnolo, francese, tedesco, portoghese brasiliano, italiano, russo, arabo (destra-sinistra) e hindi. Segui il sistema o blocca una lingua in Impostazioni.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-10
+
+### Perché la fotocamera?
+
+Solo se scegli di scattare per uno schema. Anche quella foto si elabora sul dispositivo. Non usa posizione, microfono, contatti o tracciamento.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-11
+
+### Funziona senza rete?
+
+Sì. Il lavoro centrale è offline. Serve rete solo per aprire questo sito o inviare email. L’app non contatta un server dello sviluppatore.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-12
+
+### L’app è gratis?
+
+Sì. Gratis sull’App Store, senza acquisti, abbonamenti o account. Aprila e inizia.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-13
+
+### Quali dispositivi sono supportati?
+
+L’app supporta iPhone e iPad da iOS 17 o iPadOS 17. L’interfaccia si adatta a verticale, orizzontale, finestre piccole e testo grande. Controlla la disponibilità attuale sull’App Store.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-14
+
+### Chi la realizza?
+
+Shanghai Qishan Cultural Communication Co., Ltd. Email: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-15
+
+### Fotocamera o salvataggio in Foto bloccati?
+
+Apri le autorizzazioni di Fuse Beads nelle Impostazioni di sistema e consenti la fotocamera o l’aggiunta a Foto. La fotocamera serve solo per scattare una foto. Puoi anche importare un’immagine dal selettore di sistema o da File.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-16
+
+### Come uso l’app su iPad?
+
+Sono supportati verticale, orizzontale e finestre piccole. Se parte del contenuto è tagliata, allarga la finestra o ruota il dispositivo. Dimensioni del testo e VoiceOver si regolano nell’accessibilità di sistema. Se il problema continua, invia la diagnostica e le dimensioni della finestra usata.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-17
+
+### Esportazione o importazione del backup non riuscita?
+
+Controlla prima lo spazio libero del dispositivo e che la destinazione sia scrivibile. Conserva il backup precedente e non iniziare disinstallando l’app. Il limite è di 40 MiB per backup e 200 progetti dopo l’unione. Verifica anche lo schema del file; se necessario invia errore e diagnostica all’assistenza.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/
+
+Ultimo aggiornamento: 30 ottobre 2026. Precisazioni su iPhone/iPad, preferenze locali, backup di sistema, file temporanei e hosting del sito.
+
+### Cosa raccogliamo
+
+Niente. Lo sviluppatore non raccoglie foto, schemi, liste materiali, progressi o registri d’uso. Non ci sono account, pubblicità, SDK di analisi, report di crash, sync cloud o tracciamento tra app. L’etichetta privacy dell’App Store dice che non raccogliamo dati da questa app. Il manifesto non elenca tipi raccolti. UserDefaults salva il completamento della presentazione, la lingua, le ultime impostazioni di dimensioni, limite colori, marca e dettaglio, e la quantità per confezione. Sono preferenze locali e non vengono inviate allo sviluppatore.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#collect
+
+### Foto e fotocamera
+
+Le foto da libreria o File, o scattate con la fotocamera di sistema, servono solo sul dispositivo a creare schemi. Se la rimozione dello sfondo è attiva, Apple Vision trova e protegge il soggetto sul dispositivo. Foto e maschere non vanno ad Apple, allo sviluppatore o a un server. L’app tiene un’anteprima compressa distinta nel contenitore per modifica e backup.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#photos
+
+### Archiviazione locale e conservazione
+
+Metadati, celle, spunte materiali, progressi e anteprime compressi restano in Application Support/BeadTime nella sandbox finché non elimini un progetto, tutti i progetti o l’app. Puoi esportare backup, PNG o PDF in qualsiasi momento. I dati non validi sono isolati e non sovrascrivono altri progetti. In base alle impostazioni di sistema, i dati dell’app possono essere inclusi nei backup del dispositivo o di iCloud. È un backup di sistema, non una sincronizzazione dell’app. All’esportazione corrispondente successiva, l’app elimina dalla propria cartella temporanea i file di esportazione o backup con più di 24 ore. Legge solo la data di modifica dei propri file temporanei.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#storage
+
+### Salvataggio in Foto e condivisione
+
+Per salvare un PNG in Foto, l’app richiede solo il permesso di aggiunta e non legge la libreria con tale permesso. Condividi gli altri file dal pannello di sistema verso una destinazione scelta da te. Ogni destinazione gestisce i file secondo le proprie regole. Le impostazioni di sistema possono anche consentire backup del dispositivo o di iCloud.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#share
+
+### I tuoi controlli
+
+Puoi fornire solo le foto scelte, eliminare progetti o tutti i progetti locali ed esportare backup. Questo sito è statico in sola lettura. Non chiede accesso e non usa moduli, cookie, analisi, annunci o database. La lingua sta nell’indirizzo. La casella di supporto riceve solo ciò che invii. Se ci scrivi volontariamente, l’assistenza riceve i recapiti e i contenuti che fornisci per rispondere alla richiesta. Non è una raccolta automatica da parte dell’app.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#controls
+
+### Minori e dati sensibili
+
+L’app non crea account per bambini e non chiede nome, contatti o altri dati sensibili. L’età suggerita è 4+ e le famiglie possono usarla insieme. Non importare una foto il cui contenuto non vuoi conservare in un progetto locale. Non è progettata per raccogliere dati personali di minori.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#children
+
+### Terze parti e server
+
+L’app non include SDK di terzi in esecuzione e non contatta un server dello sviluppatore. Vision elabora le immagini sul dispositivo. Il sito è ospitato da GitHub Pages; GitHub può trattare indirizzi IP e registri essenziali delle richieste per il servizio di hosting. Il sito non usa script di analisi, pubblicità o tracciamento, moduli o cookie. I fornitori di posta coinvolti elaborano le e-mail.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#third
+
+### Aggiornamenti e contatti
+
+Se le pratiche cambiano in modo sostanziale, aggiorneremo questa informativa e la data. Sviluppatore: Shanghai Qishan Cultural Communication Co., Ltd. Domande: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/it/privacy/#contact
+
+
+## Русский (ru)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/ru/home/
+
+Fuse Beads: Pattern Maker: приложение для iPhone и iPad от Shanghai Qishan Cultural Communication Co., Ltd. Китайское имя: 拼豆时光. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. Оно превращает фото из «Фото», камеры или Файлов в схему для настоящей доски и содержит 24 оригинальных рисунка. Создание, правка, материалы, сборка и резервные копии остаются на устройстве. Приложение не собирает данные, не обращается к серверу разработчика и не содержит рекламы или SDK аналитики.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/ru/
+
+### Фото загружаются?
+
+Нет. Снимки из системного выбора, камеры или Файлов обрабатываются только на устройстве. Умная очистка фона использует Apple Vision на устройстве. Фото и маски не уходят на сервер.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-1
+
+### Почему схема выглядит не так?
+
+Влияют резкость, обрезка, размер, предел цветов и режим деталей. Обычный путь качества: 40×40 и 16 цветов. Смотрите живое превью, сверяйте с оригиналом или возвращайтесь. После сохранения можно заново создать из оригинала.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-2
+
+### Как работает умная очистка фона?
+
+По умолчанию выключена. Включённая защищает объект на устройстве и считает связанный фон пустыми ячейками. Если края пропадают или фон остаётся, выключите и правьте вручную либо возьмите более ясное фото.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-3
+
+### Можно покупать по экранным кодам?
+
+Это приблизительные ориентиры, не заводские цвета. Экраны и партии расходятся. Перед большой покупкой сверьтесь с актуальной физической картой.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-4
+
+### Куда деваются PNG и PDF?
+
+Выгрузка из рабочей области или меню проекта. PNG можно сохранить в «Фото» с правом только добавлять; приложение не читает медиатеку этим правом. В PDF есть координаты. Большие доски вроде 58×58 получают листы 20×20. Остальное идёт через системное меню «Поделиться».
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-5
+
+### Проект пропал или не открывается.
+
+Данные в Application Support/BeadTime. Повреждённые элементы изолируются как projects-invalid, остальное открывается. Сначала выгрузите копию. Если файл библиотеки слишком большой, оригинал откладывается и не перезаписывается.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-6
+
+### Как сливаются копии?
+
+В настройках экспортируйте резервную копию JSON и импортируйте её для объединения проектов. Для одного проекта выбирается более позднее изменение. Неподдерживаемые схемы файла отклоняются; текущая схема: 1. Предел: 40 МиБ на копию и 200 проектов после объединения. Некорректные проекты могут быть пропущены.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-7
+
+### После удаления схемы остаются?
+
+Нет. Удаление стирает схемы, превью и прогресс песочницы. Выгрузите локальную копию до удаления приложения или смены телефона.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-8
+
+### Как скопировать диагностику?
+
+Я → Настройки и конфиденциальность → Скопировать диагностическую информацию. Там версия, устройство, система и число локальных проектов, без фото и схем. Вставьте в письмо поддержки.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-9
+
+### Какие языки есть?
+
+Английский, упрощённый китайский, традиционный китайский, японский, корейский, испанский, французский, немецкий, бразильский португальский, итальянский, русский, арабский (справа налево) и хинди. Следуйте системе или закрепите язык в Настройках.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-10
+
+### Зачем разрешение камеры?
+
+Только если вы сами снимаете для схемы. Этот снимок тоже обрабатывается на устройстве. Геолокация, микрофон, контакты и трекинг не используются.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-11
+
+### Работает без сети?
+
+Да. Основная работа полностью офлайн. Сеть нужна только чтобы открыть этот сайт или отправить письмо. Приложение не обращается к серверу разработчика.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-12
+
+### Приложение бесплатное?
+
+Да. Бесплатно в App Store, без покупок, подписок и аккаунтов. Откройте и начинайте.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-13
+
+### Какие устройства поддерживаются?
+
+Приложение поддерживает iPhone и iPad с iOS 17 или iPadOS 17. Интерфейс адаптируется к портретной и альбомной ориентации, небольшим окнам и крупному тексту. Текущую доступность смотрите в App Store.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-14
+
+### Кто делает Fuse Beads?
+
+Shanghai Qishan Cultural Communication Co., Ltd. Почта: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-15
+
+### Заблокирована камера или запись в «Фото»?
+
+Откройте разрешения Fuse Beads в системных настройках и разрешите камеру или добавление в «Фото». Камера нужна только для съёмки. Можно также импортировать изображение через системный выбор или «Файлы».
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-16
+
+### Как пользоваться приложением на iPad?
+
+Поддерживаются портретная и альбомная ориентации и небольшие окна. Если содержимое обрезано, расширьте окно или поверните устройство. Размер текста и VoiceOver настраиваются в универсальном доступе системы. Если проблема сохраняется, отправьте диагностику и размер используемого окна.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-17
+
+### Не получается экспортировать или импортировать копию?
+
+Сначала проверьте свободное место на устройстве и доступность папки для записи. Сохраните старую копию и не начинайте с удаления приложения. Предел: 40 МиБ на копию и 200 проектов после объединения. Проверьте также схему файла; при необходимости отправьте ошибку и диагностику в поддержку.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/
+
+Последнее обновление: 30 октября 2026 года. Уточнены iPhone/iPad, локальные настройки, системные резервные копии, временные файлы и хостинг сайта.
+
+### Что мы собираем
+
+Ничего. Разработчик не собирает из приложения фото, схемы, списки материалов, прогресс и записи использования. Нет аккаунта, рекламы, SDK аналитики, отчётов о сбоях, облачной синхронизации и межприложенческого трекинга. Ответ в App Store: мы не собираем данные из этого приложения. Манифест конфиденциальности не перечисляет типы сбора. UserDefaults сохраняет завершение знакомства, язык, последние размеры доски, ограничение цветов, марку и режим детализации, а также количество бусин в упаковке. Эти настройки остаются локальными и не отправляются разработчику.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#collect
+
+### Фото и камера
+
+Снимки из библиотеки или Файлов либо кадры системной камеры используются только на устройстве для схем. Если умная очистка фона включена, Apple Vision находит и защищает объект на устройстве. Фото и маски не уходят Apple, разработчику или на какой-либо сервер. Приложение хранит отдельное сжатое превью в контейнере для правки и копий.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#photos
+
+### Локальное хранение и срок
+
+Метаданные, ячейки, отметки материалов, прогресс сборки и сжатые превью остаются в Application Support/BeadTime в песочнице, пока вы не удалите проект, все проекты или приложение. Копию, PNG или PDF можно выгрузить в любой момент. Неверные данные изолируются и не перезаписывают другие проекты. В зависимости от системных настроек данные приложения могут попадать в резервные копии устройства или iCloud. Это системное резервное копирование, а не синхронизация приложения. При следующем соответствующем экспорте приложение удаляет из своей временной папки файлы экспорта или резервных копий старше 24 часов. Читается только время изменения собственных временных файлов.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#storage
+
+### Сохранение в «Фото» и обмен
+
+Для сохранения PNG в «Фото» приложение запрашивает только добавление и не читает медиатеку с этим разрешением. Другими файлами вы делитесь через системное меню, выбирая получателя. Получатель обрабатывает файлы по собственным правилам. Системные настройки также могут разрешать резервные копии устройства или iCloud.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#share
+
+### Ваш контроль
+
+Можно дать только выбранные фото, удалить проекты или все локальные проекты и выгрузить копии. Этот сайт статический и только для чтения. Нет входа, форм, cookie, аналитики, рекламы и базы. Язык задаётся адресом страницы. Почта поддержки получает только то, что вы сами отправите. Если вы сами пишете нам по электронной почте, служба поддержки получает указанные вами контактные данные и содержание обращения для ответа. Это не автоматический сбор данных приложением.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#controls
+
+### Дети и чувствительные данные
+
+Приложение не создаёт детские аккаунты и не спрашивает имя, контакты или иные чувствительные сведения. Рекомендуемый возраст 4+, семьи могут пользоваться вместе. Не импортируйте фото, содержимое которого не хотите хранить в локальном проекте. Приложение не предназначено для сбора персональных данных детей.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#children
+
+### Третьи стороны и серверы
+
+В приложении нет сторонних SDK времени выполнения и обращений к серверу разработчика. Vision обрабатывает изображения на устройстве. Сайт размещён на GitHub Pages; GitHub может обрабатывать IP-адреса и основные журналы запросов для работы хостинга. Сам сайт не использует скрипты аналитики, рекламы или отслеживания, формы и cookie. Письма обрабатывают соответствующие почтовые провайдеры.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#third
+
+### Обновления и связь
+
+Если практика существенно изменится, мы обновим эту политику и дату. Разработчик: Shanghai Qishan Cultural Communication Co., Ltd. Вопросы: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ru/privacy/#contact
+
+
+## العربية (ar)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/ar/home/
+
+بيد تايم تطبيق آيفون وiPad من Shanghai Qishan Cultural Communication Co., Ltd. الاسم الصيني 拼豆时光 والاسم الإنجليزي Fuse Beads: Pattern Maker. معرّف Apple 6799906107. Bundle ID هو com.weizhichao.beadday. يحوّل صورة من الصور أو الكاميرا أو الملفات إلى نمط يمكن صنعه على لوح حقيقي، ويتضمن 24 تصميمًا أصليًا. الإنشاء والتعديل والمواد والمتابعة والنسخ الاحتياطي تبقى على الجهاز. لا يجمع بيانات ولا يتصل بخادم المطوّر ولا يتضمن إعلانات أو حزمة تحليلات.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/ar/
+
+### هل تُرفع صوري؟
+
+لا. الصور من منتقي النظام أو الكاميرا أو الملفات تُعالَج على الجهاز فقط. إزالة الخلفية الذكية تستخدم Apple Vision على الجهاز. الصور والأقنعة لا تُرسل إلى خادم.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-1
+
+### لماذا يبدو النمط مختلفًا؟
+
+تعتمد النتيجة على وضوح الأصل والقص ومقاس اللوح وحدّ الألوان ووضع التفاصيل. مسار الجودة المعتاد 40×40 و16 لونًا. استخدم المعاينة المباشرة وقارن بالأصل أو عد للتعديل. بعد الحفظ يمكنك إعادة الإنشاء من الأصل.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-2
+
+### كيف تعمل إزالة الخلفية الذكية؟
+
+مغلقة افتراضيًا. عند تفعيلها تحمي الموضوع على الجهاز وتعامل الخلفية المتصلة كخلايا فارغة. إن اختفت الحواف أو بقيت الخلفية فأطفئها وعدّل يدويًا أو استخدم صورة أوضح.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-3
+
+### هل أشتري بالرموز الظاهرة؟
+
+اعتبرها مراجع شاشة تقريبية لا ألوان مصنع رسمية. تختلف الشاشات والدفعات. قارن بطاقة الألوان المادية الأحدث قبل شراء كبير.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-4
+
+### أين يذهب PNG وPDF؟
+
+صدّر من مساحة العمل أو قائمة المشروع. يمكن حفظ PNG في الصور بصلاحية إضافة فقط؛ التطبيق لا يقرأ المكتبة بهذه الصلاحية. يتضمن PDF إحداثيات. الألواح الكبيرة مثل 58×58 تضيف صفحات 20×20. المشاركات الأخرى تستخدم ورقة المشاركة.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-5
+
+### مشروع مفقود أو لا يفتح.
+
+تحقق أولًا من البحث والترتيب في المكتبة ثم امسح البحث. احتفظ بالتطبيق وبياناته. إن أمكن فتح الإعدادات، صدّر نسخة قبل مراسلة الدعم بمعلومات التشخيص. تُعزل المشاريع غير الصالحة محليًا للحفاظ على المشاريع القابلة للقراءة.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-6
+
+### كيف تُدمَج النسخ الاحتياطية؟
+
+صدّر نسخة JSON من أنا ← الإعدادات والخصوصية، ثم استوردها على الجهاز الآخر. تُدمج المشاريع حسب المعرّف مع تفضيل أحدث وقت تعديل. صيغة النسخ الحالية هي schema 1؛ تُرفض الصيغ غير المدعومة. عند ظهور خطأ في الصيغة، حدّث التطبيق واحتفظ بالملف الأصلي ونسخة سابقة معروفة الصلاحية.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-7
+
+### هل تبقى الأنماط بعد الحذف؟
+
+لا. إلغاء التثبيت يحذف الأنماط والمعاينات والتقدم في الصندوق الرملي. صدّر نسخة محلية قبل إزالة التطبيق أو تبديل الهاتف.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-8
+
+### كيف أنسخ معلومات التشخيص؟
+
+أنا → الإعدادات والخصوصية → نسخ معلومات التشخيص. تتضمن إصدار التطبيق والجهاز والنظام وعدد المشاريع المحلية دون صور أو أنماط. الصقها في رسالة الدعم.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-9
+
+### ما اللغات المضمنة؟
+
+الإنجليزية والصينية المبسطة والصينية التقليدية واليابانية والكورية والإسبانية والفرنسية والألمانية والبرتغالية البرازيلية والإيطالية والروسية والعربية (من اليمين إلى اليسار) والهندية. اتبع النظام أو ثبّت لغة في الإعدادات.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-10
+
+### لماذا يطلب الكاميرا؟
+
+فقط إذا اخترت التقاط صورة لنمط. تُعالَج تلك الصورة على الجهاز أيضًا. لا يستخدم الموقع أو الميكروفون أو جهات الاتصال أو التتبّع.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-11
+
+### هل يعمل دون شبكة؟
+
+نعم. العمل الأساسي دون اتصال تمامًا. تحتاج الشبكة فقط لفتح هذا الموقع أو إرسال بريد. التطبيق لا يتصل بخادم المطوّر.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-12
+
+### هل التطبيق مجاني؟
+
+نعم. مجاني على App Store بلا مشتريات داخل التطبيق ولا اشتراك ولا حساب. افتحه وابدأ.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-13
+
+### ما الأجهزة المدعومة؟
+
+يدعم iPhone وiPad بنظام iOS / iPadOS 17 أو أحدث، في الوضعين الرأسي والأفقي والنوافذ الصغيرة والنص الكبير. راجع قائمة التوافق في App Store للأجهزة الأخرى.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-14
+
+### من يصنع بيد تايم؟
+
+Shanghai Qishan Cultural Communication Co., Ltd. بريد الدعم: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-15
+
+### ماذا لو رُفضت الكاميرا أو إضافة الصور؟
+
+افتح إعدادات النظام وابحث عن التطبيق، واسمح بالكاميرا أو إضافة الصور حسب الحاجة ثم أعد المحاولة. استيراد الصور يستخدم منتقي النظام للصور التي تختارها فقط، ويمكن الاستيراد من الملفات. احتفظ بالتطبيق أثناء حل الأذونات.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-16
+
+### كيف أضبط تخطيط iPad وحجم النص؟
+
+أدر الجهاز أو غيّر حجم نافذة تعدد المهام؛ يتكيف التخطيط مع العرض المتاح. اضبط النص في إعدادات النظام. يدعم التطبيق Dynamic Type بما فيه أحجام تسهيلات الاستخدام، وعناصر تحكم مكافئة عبر VoiceOver.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-17
+
+### ماذا لو فشل النسخ أو كبر الملف؟
+
+تحقق من مساحة الجهاز وإمكانية الكتابة إلى الوجهة، واحتفظ بالنسخة السابقة ثم أعد المحاولة. حد النسخة الواحدة 40 MiB، والحد بعد الدمج 200 مشروع. عند تجاوز الحجم، صدّر PNG/PDF للمشاريع المهمة وراسل الدعم قبل حذف المشاريع أو التطبيق. لا تحل ملفات PNG/PDF محل نسخة JSON القابلة للتحرير.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/
+
+آخر تحديث: 30 أكتوبر 2026. توضيح دعم iPhone وiPad وتفضيلات الإنشاء والملفات المؤقتة ونسخ النظام واستضافة الموقع ودعم البريد.
+
+### ماذا نجمع
+
+لا يجمع المطوّر من التطبيق صورًا أو أنماطًا أو قوائم مواد أو تقدمًا أو سجلات استخدام. لا حسابات أو إعلانات أو حزم تحليلات أو تقارير أعطال عن بُعد أو تتبّع عبر التطبيقات أو مزامنة سحابية خاصة بالتطبيق. قائمة أنواع البيانات المجموعة فارغة. يحفظ UserDefaults محليًا إكمال التعريف واللغة وأبعاد اللوح وحد الألوان والعلامة ووضع التفاصيل وحجم عبوة المواد، ولا يرسلها إلى خادم المطوّر.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#collect
+
+### الصور والكاميرا
+
+الصور التي تختارها من المكتبة أو الملفات أو تلتقطها بكاميرا النظام تُستخدم على الجهاز فقط لبناء أنماط الخرز. إذا كانت إزالة الخلفية الذكية مفعّلة يجد Apple Vision الموضوع ويحميه على الجهاز. لا تُرسل الصور والأقنعة إلى Apple أو المطوّر أو أي خادم. يحتفظ التطبيق بمعاينة مضغوطة منفصلة في حاويته للتحرير والنسخ.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#photos
+
+### التخزين المحلي والاحتفاظ
+
+تبقى المشاريع وخلايا الخرز وحالة المواد والتقدم والمعاينات المضغوطة في حاوية التطبيق حتى تحذف المشاريع أو جميعها أو تلغي تثبيت التطبيق. تُعزل البيانات غير الصالحة محليًا. يمكنك تصدير JSON أو PNG أو PDF. عند تصدير لاحق من النوع نفسه، يحاول التطبيق حذف نسخ المشاركة المؤقتة الأقدم من 24 ساعة، ويقرأ أوقات التعديل داخل مجلداته المؤقتة لهذا الغرض فقط. لا تتأثر النسخ المحفوظة في أماكن أخرى. قد تتضمن نسخ النظام، بما فيها iCloud، بيانات التطبيق وفق إعداداتك. هذا مختلف عن مزامنة التطبيق؛ ولا يستطيع المطوّر الوصول إلى نسخ النظام.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#storage
+
+### الحفظ في الصور والمشاركة
+
+حفظ PNG في الصور يطلب إذن إضافة فقط لكتابة الصورة المختارة، ولا يقرأ المكتبة بهذا الإذن. تتولى ورقة مشاركة النظام والوجهة المختارة الصادرات الأخرى، وقد تسري سياسة تلك الخدمة على الملف. وقد تحتفظ نسخ النظام ببيانات التطبيق وفق إعداداتك.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#share
+
+### سيطرتك
+
+يمكنك تقديم الصور المختارة فقط وحذف المشاريع أو جميع المشاريع المحلية وتصدير النسخ. الموقع ثابت للقراءة فقط، دون تسجيل دخول أو نماذج أو تحليلات أو إعلانات أو ملفات تتبّع. إذا أرسلت بريدًا للدعم، يستقبل عنوانك ونصك ومرفقاتك لمعالجة طلبك؛ وهذا ليس جمعًا تلقائيًا من التطبيق. تجنّب إرسال صور خاصة.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#controls
+
+### الأطفال والمعلومات الحساسة
+
+لا ينشئ التطبيق حسابات أطفال ولا يطلب أسماء أو بيانات اتصال أو معلومات حساسة أخرى. التصنيف العمري المقترح 4+ ويمكن للعائلات استخدامه معًا. لا تستورد صورة لا تريد بقاء محتواها في مشروع محلي. التطبيق غير مصمم لجمع المعلومات الشخصية للأطفال.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#children
+
+### أطراف ثالثة وخوادم
+
+لا يتضمن التطبيق حزم تشغيل لطرف ثالث ولا يتصل بخادم المطوّر. تُنفذ إزالة الخلفية عبر Apple Vision على الجهاز. يستضيف GitHub Pages الموقع، وقد يعالج المزوّد عناوين IP وسجلات الطلبات الأساسية لتقديم الصفحات وفق بيان خصوصيته. لا يضيف الموقع تحليلات أو نصوص إعلانات. يتولى مزوّدو البريد المعنيون معالجة رسائل الدعم.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#third
+
+### التحديثات والتواصل
+
+إذا تغيّرت ممارسات الخصوصية بشكل جوهري سنحدّث هذه السياسة وتاريخها. المطوّر: Shanghai Qishan Cultural Communication Co., Ltd. لأسئلة الخصوصية راسل 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/ar/privacy/#contact
+
+
+## हिन्दी (hi)
+
+Home: https://weizhichao1027-collab.github.io/beadtime-site/hi/home/
+
+Fuse Beads: Pattern Maker, Shanghai Qishan Cultural Communication Co., Ltd. का iPhone और iPad ऐप है. चीनी नाम 拼豆时光 है. Apple ID 6799906107. Bundle ID com.weizhichao.beadday. यह फ़ोटो, कैमरा या फ़ाइल्स की तस्वीर को असली पेगबोर्ड पर बनने वाले पैटर्न में बदलता है और 24 मूल बिल्ट-इन डिज़ाइन देता है. बनाना, संपादन, सामग्री, फ़ॉलो-अलांग और बैकअप डिवाइस पर रहते हैं. ऐप डेटा नहीं जोड़ता, डेवलपर सर्वर से नहीं जुड़ता, और विज्ञापन या एनालिटिक्स SDK नहीं रखता.
+
+Support: https://weizhichao1027-collab.github.io/beadtime-site/hi/
+
+### क्या मेरी फ़ोटो अपलोड होती हैं?
+
+नहीं. सिस्टम पिकर, कैमरा या फ़ाइल्स से चुनी फ़ोटो केवल डिवाइस पर संसाधित होती हैं. स्मार्ट बैकग्राउंड हटाना डिवाइस पर Apple Vision इस्तेमाल करता है. फ़ोटो और मास्क सर्वर पर नहीं जाते.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-1
+
+### पैटर्न अलग क्यों दिखता है?
+
+परिणाम मूल की तीक्ष्णता, क्रॉप, बोर्ड आकार, रंग सीमा और विवरण मोड पर निर्भर है. सामान्य गुणवत्ता पथ 40×40 और 16 रंग है. लाइव पूर्वावलोकन देखें, मूल से मिलाएँ या लौटें. सहेजने के बाद भी मूल से फिर बना सकते हैं.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-2
+
+### स्मार्ट बैकग्राउंड हटाना कैसे काम करता है?
+
+डिफ़ॉल्ट बंद है. चालू होने पर विषय को डिवाइस पर बचाता है और जुड़े पृष्ठभूमि को खाली कोष्ठ मानता है. किनारे कट जाएँ या पृष्ठभूमि रह जाए तो बंद करें और हाथ से ठीक करें, या साफ़ विषय वाली फ़ोटो लें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-3
+
+### क्या स्क्रीन कोड से मोती खरीदूँ?
+
+इन्हें अनुमानित स्क्रीन संदर्भ मानें, आधिकारिक फ़ैक्टरी रंग नहीं. डिस्प्ले और बैच बदलते हैं. बड़ी खरीद से पहले नवीनतम भौतिक चार्ट देखें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-4
+
+### PNG और PDF कहाँ जाते हैं?
+
+वर्कस्पेस या प्रोजेक्ट मेनू से निर्यात करें. PNG फ़ोटो में केवल-जोड़ने की अनुमति से सहेजा जा सकता है; ऐप उस अनुमति से लाइब्रेरी नहीं पढ़ता. PDF में निर्देशांक होते हैं. 58×58 जैसे बड़े बोर्ड में 20×20 खंड पृष्ठ जुड़ते हैं. अन्य साझाकरण सिस्टम शेयर शीट से होता है.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-5
+
+### प्रोजेक्ट नहीं मिलता या नहीं खुलता.
+
+पहले लाइब्रेरी की खोज और क्रम जाँचें, फिर खोज साफ़ करें. ऐप और मूल डेटा बनाए रखें. सेटिंग खुलती हो तो पहले बैकअप निर्यात करें और निदान जानकारी के साथ सहायता को लिखें. अमान्य प्रोजेक्ट डिवाइस पर अलग किए जाते हैं ताकि पढ़े जा सकने वाले दूसरे प्रोजेक्ट सुरक्षित रहें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-6
+
+### बैकअप कैसे मिलते हैं?
+
+मैं → सेटिंग और गोपनीयता से JSON बैकअप निर्यात करें और दूसरे डिवाइस पर आयात करें. एक ही प्रोजेक्ट की सबसे हाल में बदली गई प्रति रखी जाती है. वर्तमान बैकअप फ़ॉर्मैट schema 1 है; असमर्थित फ़ॉर्मैट अस्वीकार होते हैं. फ़ॉर्मैट त्रुटि आए तो ऐप अपडेट करें और मूल फ़ाइल व काम करने वाला पुराना बैकअप सुरक्षित रखें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-7
+
+### अनइंस्टॉल करने पर पैटर्न रहते हैं?
+
+नहीं. अनइंस्टॉल सैंडबॉक्स पैटर्न, पूर्वावलोकन और प्रगति मिटाता है. ऐप हटाने या फ़ोन बदलने से पहले स्थानीय बैकअप निर्यात करें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-8
+
+### डायग्नोस्टिक्स कैसे कॉपी करें?
+
+मैं → सेटिंग और गोपनीयता → डायग्नोस्टिक जानकारी कॉपी करें. इसमें ऐप संस्करण, डिवाइस, सिस्टम और स्थानीय प्रोजेक्ट संख्या है, फ़ोटो या पैटर्न नहीं. सहायता ईमेल में चिपकाएँ.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-9
+
+### कौन-सी भाषाएँ हैं?
+
+अंग्रेज़ी, सरलीकृत चीनी, पारंपरिक चीनी, जापानी, कोरियाई, स्पेनिश, फ़्रेंच, जर्मन, ब्राज़ीलियाई पुर्तगाली, इतालवी, रूसी, अरबी (दाएँ से बाएँ) और हिन्दी. सिस्टम का पालन करें या सेटिंग में भाषा लॉक करें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-10
+
+### कैमरा अनुमति क्यों?
+
+केवल जब आप पैटर्न के लिए फ़ोटो खींचें. वह फ़ोटो भी डिवाइस पर संसाधित होती है. स्थान, माइक्रोफ़ोन, संपर्क या ट्रैकिंग नहीं.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-11
+
+### बिना नेटवर्क चलता है?
+
+हाँ. मुख्य बनाना पूरी तरह ऑफ़लाइन है. नेटवर्क केवल यह साइट खोलने या ईमेल भेजने के लिए चाहिए. ऐप डेवलपर सर्वर से नहीं जुड़ता.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-12
+
+### क्या ऐप मुफ़्त है?
+
+हाँ. App Store पर मुफ़्त, बिना इन-ऐप खरीद, सदस्यता या खाते. खोलें और शुरू करें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-13
+
+### कौन से डिवाइस समर्थित हैं?
+
+iOS / iPadOS 17 या नए iPhone और iPad समर्थित हैं. पोर्ट्रेट, लैंडस्केप, छोटी विंडो और बड़े टेक्स्ट के लिए लेआउट उपलब्ध हैं. अन्य डिवाइस के लिए App Store की संगतता सूची देखें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-14
+
+### इसे कौन बनाता है?
+
+Shanghai Qishan Cultural Communication Co., Ltd. सहायता ईमेल: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-15
+
+### कैमरा या फ़ोटो में सहेजने की अनुमति न मिले तो?
+
+सिस्टम सेटिंग में ऐप खोलें और ज़रूरत के अनुसार कैमरा या केवल फ़ोटो जोड़ने की अनुमति दें, फिर प्रयास करें. फ़ोटो आयात में सिस्टम पिकर केवल चुनी हुई फ़ोटो देता है; फ़ाइल्स से भी आयात कर सकते हैं. अनुमति ठीक करते समय ऐप न हटाएँ.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-16
+
+### iPad पर लेआउट और टेक्स्ट कैसे बदलें?
+
+डिवाइस घुमाएँ या मल्टीटास्किंग विंडो का आकार बदलें; लेआउट उपलब्ध चौड़ाई के अनुसार बदलता है. सिस्टम सेटिंग में टेक्स्ट आकार चुनें. ऐप एक्सेसिबिलिटी आकारों सहित Dynamic Type और VoiceOver के समकक्ष नियंत्रणों का समर्थन करता है.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-17
+
+### बैकअप विफल या बहुत बड़ा हो तो?
+
+डिवाइस की खाली जगह और गंतव्य पर लिखने की सुविधा जाँचें, पुराना बैकअप रखें और फिर प्रयास करें. एक बैकअप की सीमा 40 MiB है और मर्ज के बाद अधिकतम 200 प्रोजेक्ट हो सकते हैं. बहुत बड़ा होने पर महत्वपूर्ण प्रोजेक्ट के PNG/PDF निर्यात करें और प्रोजेक्ट या ऐप हटाने से पहले सहायता से संपर्क करें. PNG/PDF संपादन योग्य JSON बैकअप की जगह नहीं लेते.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/#faq-18
+
+Privacy: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/
+
+अंतिम अपडेट: 30 अक्टूबर 2026. iPhone और iPad, जनरेशन प्राथमिकताएँ, अस्थायी निर्यात, सिस्टम बैकअप, वेबसाइट होस्टिंग और ईमेल सहायता स्पष्ट की गई है.
+
+### हम क्या जोड़ते हैं
+
+डेवलपर ऐप से फ़ोटो, पैटर्न, सामग्री सूची, प्रगति या उपयोग रिकॉर्ड एकत्र नहीं करता. खाते, विज्ञापन, एनालिटिक्स SDK, रिमोट क्रैश रिपोर्ट, क्रॉस-ऐप ट्रैकिंग या ऐप की अपनी क्लाउड सिंक सुविधा नहीं है. गोपनीयता मैनिफ़ेस्ट में एकत्र डेटा प्रकार खाली हैं. UserDefaults आरंभिक परिचय, भाषा, पिछला बोर्ड आकार, रंग सीमा, ब्रांड, डिटेल मोड और सामग्री पैक आकार की प्राथमिकताएँ स्थानीय रूप से रखता है; इन्हें डेवलपर सर्वर पर नहीं भेजा जाता.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#collect
+
+### फ़ोटो और कैमरा
+
+लाइब्रेरी या फ़ाइल्स से चुनी फ़ोटो, या सिस्टम कैमरा से खींची फ़ोटो, केवल डिवाइस पर पैटर्न बनाने के लिए हैं. स्मार्ट बैकग्राउंड हटाना चालू हो तो Apple Vision विषय को डिवाइस पर ढूँढता और बचाता है. फ़ोटो और मास्क Apple, डेवलपर या किसी सर्वर पर नहीं जाते. ऐप संपादन और बैकअप के लिए कंटेनर में अलग संपीड़ित पूर्वावलोकन रखता है.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#photos
+
+### स्थानीय संग्रह और अवधि
+
+प्रोजेक्ट, दानों के स्थान, सामग्री की तैयारी, प्रगति और संपीड़ित प्रीव्यू ऐप कंटेनर में तब तक रहते हैं जब तक आप प्रोजेक्ट, सभी प्रोजेक्ट या ऐप न हटा दें. अमान्य डेटा स्थानीय रूप से अलग किया जाता है. JSON बैकअप, PNG या PDF निर्यात कर सकते हैं. अगली बार उसी प्रकार का निर्यात करते समय ऐप 24 घंटे से पुराने अस्थायी शेयर फ़ाइलों को हटाने की कोशिश करता है और केवल इसी उद्देश्य से अपने अस्थायी फ़ोल्डर के संशोधन समय पढ़ता है. अन्य जगह सहेजी प्रतियाँ नहीं बदलतीं. आपके सिस्टम सेटिंग के अनुसार iCloud सहित सिस्टम बैकअप में ऐप डेटा शामिल हो सकता है. यह ऐप की अपनी सिंक सुविधा नहीं है; डेवलपर आपके सिस्टम बैकअप नहीं देख सकता.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#storage
+
+### फ़ोटो में सहेजना और साझाकरण
+
+PNG को फ़ोटो में सहेजते समय केवल जोड़ने की अनुमति से चुनी हुई छवि लिखी जाती है; इस अनुमति से लाइब्रेरी नहीं पढ़ी जाती. अन्य निर्यात सिस्टम शेयर शीट और चुने हुए गंतव्य द्वारा सँभाले जाते हैं, जिनकी अपनी नीतियाँ लागू हो सकती हैं. सिस्टम बैकअप भी आपकी सेटिंग के अनुसार ऐप डेटा रख सकता है.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#share
+
+### आपका नियंत्रण
+
+केवल चुनी फ़ोटो दे सकते हैं, प्रोजेक्ट या सभी स्थानीय प्रोजेक्ट हटा सकते हैं और बैकअप निर्यात कर सकते हैं. यह केवल पढ़ने वाली स्थिर वेबसाइट बिना लॉगिन, फ़ॉर्म, एनालिटिक्स, विज्ञापन या ट्रैकिंग कुकी के है. सहायता को स्वयं ईमेल भेजने पर आपका ईमेल पता, संदेश और संलग्नक समस्या हल करने के लिए मिलते हैं; यह ऐप का स्वतः संग्रह नहीं है. निजी फ़ोटो न भेजें.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#controls
+
+### बच्चे और संवेदनशील जानकारी
+
+ऐप बाल खाते नहीं बनाता और नाम, संपर्क या अन्य संवेदनशील जानकारी नहीं माँगता. सुझाई आयु 4+ है और परिवार साथ इस्तेमाल कर सकते हैं. ऐसी फ़ोटो न लाएँ जिसका विषय आप स्थानीय प्रोजेक्ट में नहीं रखना चाहते. ऐप बच्चों की व्यक्तिगत जानकारी जोड़ने के लिए नहीं बना.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#children
+
+### तीसरे पक्ष और सर्वर
+
+ऐप में तीसरे पक्ष का रनटाइम SDK नहीं है और यह डेवलपर सर्वर से नहीं जुड़ता. बैकग्राउंड हटाना डिवाइस पर Apple Vision से होता है. वेबसाइट GitHub Pages पर होस्ट है; प्रदाता पेज देने के लिए IP पते और मूल अनुरोध लॉग अपनी गोपनीयता सूचना के अनुसार संसाधित कर सकता है. वेबसाइट अपने एनालिटिक्स या विज्ञापन स्क्रिप्ट नहीं जोड़ती. संबंधित ईमेल प्रदाता सहायता संदेश सँभालते हैं.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#third
+
+### अद्यतन और संपर्क
+
+यदि गोपनीयता व्यवहार सार रूप में बदले, हम यह नीति और तिथि अद्यतन करेंगे. डेवलपर: Shanghai Qishan Cultural Communication Co., Ltd. प्रश्न: 281916057@qq.com.
+
+Source: https://weizhichao1027-collab.github.io/beadtime-site/hi/privacy/#contact

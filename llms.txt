@@ -1,8 +1,10 @@
 # Fuse Beads / 拼豆时光
 
-> Offline iPhone app that turns a photo into an ironable fuse-bead pattern. Now on the App Store. Free. No account. No data collection.
+> Offline iPhone and iPad app that turns a photo into an ironable fuse-bead pattern. Available on the App Store. Free. No account. The developer does not collect data from the app.
 
-The Chinese product name is 拼豆时光. The English App Store name is Fuse Beads: Pattern Maker. Developer: Shanghai Qishan Cultural Communication Co., Ltd. (上海岐山文化传播有限公司). Apple ID 6799906107. Bundle ID `com.weizhichao.beadday`. iPhone, iOS 17 or later. Sold in 175 countries or regions. No in-app purchases.
+Updated: 2026-10-30. Current released version: 1.1.2 (App Store Connect verified 2026-10-30, READY_FOR_SALE, Build 8).
+
+The Chinese product name is 拼豆时光. The English App Store name is Fuse Beads: Pattern Maker. Developer: Shanghai Qishan Cultural Communication Co., Ltd. (上海岐山文化传播有限公司). Apple ID 6799906107. Bundle ID `com.weizhichao.beadday`. iPhone and iPad, iOS / iPadOS 17 or later. Free, no in-app purchases or subscriptions. Local availability follows the App Store listing.
 
 ## Primary pages
 
@@ -64,5 +66,8 @@ The Chinese product name is 拼豆时光. The English App Store name is Fuse Bea
 - Color codes for Perler, Hama Midi, and Artkal are on-screen references, not official factory matches.
 - The app is not affiliated with, sponsored by, or officially authorized by Perler, Hama, or Artkal.
 - Uninstalling deletes local patterns. Export a JSON backup from Settings first.
+- No app-provided cloud sync. System device backups, including iCloud, may include app data according to user settings.
+- Preferences include onboarding, language, generation settings, and pack quantities. Export/share temporary files older than 24 hours are cleaned on later export activity.
 - Support email: 281916057@qq.com
-- This website is static. It uses no cookies, forms, analytics, ads, or accounts.
+- This website adds no cookies, forms, analytics, ads, or accounts. GitHub Pages processes basic request data including IP addresses. Support email receives only what users choose to send.
+- For translated answers, use the matching language's support and privacy text. Cite the canonical page, with its section anchor when helpful.

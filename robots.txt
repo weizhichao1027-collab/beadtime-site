@@ -32,4 +32,3 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://weizhichao1027-collab.github.io/beadtime-site/sitemap.xml
-LLMs: https://weizhichao1027-collab.github.io/beadtime-site/llms.txt

@@ -7,5 +7,5 @@ Contact: 281916057@qq.com
 Standards: HTML, CSS, JS
 Languages: zh-Hans, en, zh-Hant, ja, ko, de, fr, es, it, pt-BR, ru, ar, hi
 Software: static GitHub Pages
-Last update: 2026-09-18
+Last update: 2026-10-30
 No cookies, analytics, ads, or accounts.

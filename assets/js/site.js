@@ -56,6 +56,7 @@
   }
 
   let scrollLockY = 0;
+  let inertBackground = [];
 
   function isNavOpen() {
     return Boolean(document.querySelector(".site-header.is-open"));
@@ -94,8 +95,18 @@
     const backdrop = document.getElementById("nav-backdrop");
     if (backdrop) backdrop.hidden = !open;
     syncToggle(open);
-    if (open && !wasOpen) lockScroll();
-    if (!open && wasOpen) unlockScroll();
+    if (open && !wasOpen) {
+      lockScroll();
+      inertBackground = [...document.querySelectorAll("main, .site-footer, .brand, .locale-picker, .header-tools > .btn")].filter(node => !node.inert);
+      inertBackground.forEach(node => { node.inert = true; });
+      document.querySelector("#nav-cluster a")?.focus();
+    }
+    if (!open && wasOpen) {
+      inertBackground.forEach(node => { node.inert = false; });
+      inertBackground = [];
+      unlockScroll();
+      document.querySelector(".nav-toggle")?.focus();
+    }
   }
 
   function closeNav() {
@@ -211,9 +222,17 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape" || !isNavOpen()) return;
-    closeNav();
-    document.querySelector(".nav-toggle")?.focus();
+    if (!isNavOpen()) return;
+    if (event.key === "Escape") {
+      closeNav();
+      return;
+    }
+    if (event.key === "Tab") {
+      const controls = [document.querySelector(".nav-toggle"), ...document.querySelectorAll("#nav-cluster a")].filter(Boolean);
+      const index = controls.indexOf(document.activeElement);
+      event.preventDefault();
+      controls[(index + (event.shiftKey ? -1 : 1) + controls.length) % controls.length]?.focus();
+    }
   });
 
   window.addEventListener("resize", placeNav);
